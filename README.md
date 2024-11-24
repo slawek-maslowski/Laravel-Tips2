@@ -3053,7 +3053,9 @@ Did you know you can configure Laravel to throw an exception when attempting to 
 ```php
 <?php
 
-Model::preventLazyLoading(! $this->app->isProduction());
+use Illuminate\Database\Eloquent\Model;
+
+Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
 ```
 
 ## Tip #166 💡: Create New Records or Update Existing Ones

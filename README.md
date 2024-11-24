@@ -2486,13 +2486,11 @@ Did you know that you can spell numbers in different locales using the "Number" 
 ```php
 <?php
 
-$collection = collect([1, 2, 3, 4]);
+use Illuminate\Support\Number;
 
-$subset = $collection->skipUntil(function (int $item) {
-    return $item >= 3;
-});
+$number = Number::spell(102); // one hundred and two
 
-$subset->all(); // [3, 4]
+$number = Number::spell(88, locale: 'fr'); // quatre-vingt-huit
 ```
 
 ## Tip #132 💡: Human-readable Numbers

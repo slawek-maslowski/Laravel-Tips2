@@ -3986,7 +3986,7 @@ collect(['a', 'b', 'c'])->join(', ', ''); // 'a, b, c'
 collect(['a', 'b', 'c'])->join(', ', ', and '); // 'a, b, and c'
 
 // And it's smart enough to handle edge cases
-collect(['a'])->join(', ', ', ', ', and '); // 'a'
+collect(['a'])->join(', ', ', and '); // 'a'
 collect([])->join(', ', ', and '); // ''
 ```
 

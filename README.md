@@ -57,12 +57,12 @@ class User extends Model
     }
 }
 
-User::create([
+$user = User::create([
     'username' => 'oussama',
 ]);
 
-$book->getOriginal('username'); // oussama#1234
-$book->getRawOriginal('username'); // oussama
+$user->getOriginal('username'); // oussama#1234
+$user->getRawOriginal('username'); // oussama
 ```
 
 ## Tip #3 💡: Model Binding in Form Requests

@@ -4548,7 +4548,7 @@ $ids = User::all()->pluck('id');
 $ids = User::all()->modelKeys();
 ```
 
-## Tip #251 💡: Laravel's Singed Routes
+## Tip #251 💡: Laravel's Signed Routes
 
 A reminder that Laravel ships with signed routes. They are perfect for magic login links, temporary access, and one-time actions like unsubscribing users, all in a safe way by making sure the URL isn't tampered with 🚀
 

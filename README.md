@@ -323,7 +323,7 @@ Did you know you could pass multiple arguments to the isset() function?
 ```php
 <?php
 
-if(isset($var1) && is($var2)) { ... }
+if(isset($var1) && isset($var2)) { ... }
 if(isset($var1, $var2)) { ... }
 ```
 

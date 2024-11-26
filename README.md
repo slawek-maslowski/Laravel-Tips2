@@ -1760,9 +1760,9 @@ Str::mask('john@example.com', '*', 3); // joh*************
 Str::mask('98552157', '*', -5, 4); // 985****7
 ```
 
-## Tip #92 💡: Much Readable Numbers
+## Tip #92 💡: More Readable Numbers
 
-f you work with numbers, the longer they are, the harder they are to read. Did you know you can use underscores for better readability? 🚀
+If you work with numbers, the longer they are, the harder they are to read. Did you know you can use underscores for better readability? 🚀
 
 ```php
 <?php

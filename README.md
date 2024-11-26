@@ -2152,23 +2152,7 @@ Schedule::command('report:generate')
     ->at('9:00')
 ```
 
-## Tip #113 💡: Typed Configs
-
-Did you know that Laravel 11 now offers typed configs? This means you can enforce types, and assist static analysis  🚀
-
-```php
-<?php
-
-// If the retrieved config does not match the expected type, an exception
-// will be thrown.
-Config::string('config-key');  // config('config-key')->string();
-Config::integer('config-key'); // config('config-key')->integer();
-Config::float('config-key');   // config('config-key')->float();
-Config::boolean('config-key'); // config('config-key')->boolean();
-Config::array('config-key');   // config('config-key')->array();
-```
-
-## Tip #114 💡: Singleton Routes
+## Tip #113 💡: Singleton Routes
 
 Sometimes you may need singleton resources that can't be created but only shown or edited, like a user profile, for example. Laravel ships with a singleton helper to allow you to define these routes 🚀
 
@@ -2188,7 +2172,7 @@ PUT/PATCH   /profile
 */
 ```
 
-## Tip #115 💡: Authenticate the User Once
+## Tip #114 💡: Authenticate the User Once
 
 Did you know that Laravel ships with the "once" method for authenticating the user only for the current request? This can be handy in various scenarios, such as building single-use links or RESTful APIs 🚀
 
@@ -2201,7 +2185,7 @@ if (Auth::once($credentials)) {
 
 ```
 
-## Tip #116 💡: The "doesntExist" Method
+## Tip #115 💡: The "doesntExist" Method
 
 Sometimes you may want to check if certain records do not exist in the database. While checking the count or using the exists() method can do the trick, Laravel ships with the "doesntExist" method to do it elegantly 🚀
 
@@ -2222,7 +2206,7 @@ if (User::doesntExist()) {
 }
 ```
 
-## Tip #117 💡: Clone Your Queries
+## Tip #116 💡: Clone Your Queries
 
 Sometimes you may need to reuse the same base query for multiple filtering. Laravel ships with a "clone" method to do exactly that 🚀
 
@@ -2238,7 +2222,7 @@ $verified_users = $query->clone()->whereNotNull('email_verified_at')->get();
 $unverified_users = $query->clone()->whereNull('email_verified_at')->get();
 ```
 
-## Tip #118 💡: Assert Model Missing
+## Tip #117 💡: Assert Model Missing
 
 When writing tests, we often use `assertDatabaseMissing` to check whether a model has been deleted. Did you know that Laravel ships with a cool helper called `assertModelMissing` to do exactly that? 🚀
 
@@ -2260,7 +2244,7 @@ $this->assertDatabaseMissing('users', [
 $this->assertModelMissing($user);
 ```
 
-## Tip #119 💡: Check Collection Item Types
+## Tip #118 💡: Check Collection Item Types
 
 Sometimes you may want to ensure that the collection items are all of a specific type. While `map` paired with an `instanceof` check might do the trick, Laravel already ships with the `ensure` method to do that 🚀
 
@@ -2284,7 +2268,7 @@ return $collection->ensure([User::class, Customer::class]);
 return $collection->ensure('int');
 ```
 
-## Tip #120 💡: Stop On First Failure
+## Tip #119 💡: Stop On First Failure
 
 Sometimes, when validating a request, you may want to stop at the first failure. Laravel allows you to do this by setting the "stopOnFirstFailure" property to true on the form request class 🚀
 
@@ -2299,7 +2283,7 @@ Sometimes, when validating a request, you may want to stop at the first failure.
 protected $stopOnFirstFailure = true;
 ```
 
-## Tip #121 💡: The "bail" Validation Rule
+## Tip #120 💡: The "bail" Validation Rule
 
 Sometimes, when validating a field, you may want to stop at the first validation failure. Laravel ships with a rule called "bail" to do exactly that 🚀
 
@@ -2314,7 +2298,7 @@ $request->validate([
 ]);
 ```
 
-## Tip #122 💡: Faker "valid()" Modifier
+## Tip #121 💡: Faker "valid()" Modifier
 
 Since Laravel uses FakerPHP under the hood, you can use the "valid()" modifier to ensure that the generated fake data follows certain rules 🚀
 
@@ -2325,7 +2309,7 @@ Since Laravel uses FakerPHP under the hood, you can use the "valid()" modifier t
 $evenNumber = fake()->valid(fn (int $digit) => $digit % 2 === 0)->randomDigit();
 ```
 
-## Tip #123 💡: Hide Columns On The Fly
+## Tip #122 💡: Hide Columns On The Fly
 
 Sometimes, you may want to hide model attributes that were not defined in the "hidden" array. Laravel allows you to do this on the fly using the "makeHidden" method 🚀
 
@@ -2335,7 +2319,7 @@ Sometimes, you may want to hide model attributes that were not defined in the "h
 $users = User::all()->makeHidden(['address', 'phone_number']);
 ```
 
-## Tip #124 💡: Without Data Wrapping
+## Tip #123 💡: Without Data Wrapping
 
 Eloquent API resources are automatically wrapped in a "data" object. Sometimes, you may want to remove this wrapping. Laravel includes the "withoutWrapping" method to do exactly that 🚀
 
@@ -2366,7 +2350,7 @@ class AppServiceProvider extends ServiceProvider
 */
 ```
 
-## Tip #125 💡: Collect API Responses
+## Tip #124 💡: Collect API Responses
 
 Usually, when working with the HTTP Client, we manually collect the JSON response from the API. However, did you know that Laravel ships with the "collect" method directly on the HTTP Client? 🚀
 
@@ -2383,7 +2367,7 @@ collect($response);
 $collection = Http::get('http://example.com')->collect();
 ```
 
-## Tip #126 💡: The "data_get" Helper
+## Tip #125 💡: The "data_get" Helper
 
 When working with nested arrays, Laravel provides a cool helper called "data_get". This helper allows you to use "dot" syntax and wildcards to retrieve values 🚀
 
@@ -2399,7 +2383,7 @@ data_get($data, 'product-one.name'); // ['Desk 1'];
 data_get($data, '*.name'); // ['Desk 1', 'Desk 2'];
 ```
 
-## Tip #127 💡: Better Checks For Input Presence
+## Tip #126 💡: Better Checks For Input Presence
 
 We often need to check if a request contains certain values. Did you know that Laravel ships with two cool methods, "has" and "hasAny", to perform these checks elegantly? 🚀
 
@@ -2417,7 +2401,7 @@ if ($request->hasAny(['name', 'email'])) {
 }
 ```
 
-## Tip #128 💡: Bind Typed Variadics
+## Tip #127 💡: Bind Typed Variadics
 
 Did you know that you can bind typed variadics to the container? Laravel ships with 3 methods to allow you to do so: "when()", "needs()", and "give()". You can keep using DI without worries! 🚀
 
@@ -2451,7 +2435,7 @@ $this->app->when(Firewall::class)
     });
 ```
 
-## Tip #129 💡: The "every" Collection Method
+## Tip #128 💡: The "every" Collection Method
 
 Sometimes you may want to check if every element in the collection passes a condition. Luckily, Laravel ships with the "every" method to do exactly that 🚀
 
@@ -2465,7 +2449,7 @@ $result = collect([])->every(fn (int $value, int $key) => $value > 2);
 // Since the collection is empty, $result will be true
 ```
 
-## Tip #130 💡: The "forget" Collection Method
+## Tip #129 💡: The "forget" Collection Method
 
 Sometimes, when working with collections, you may want to remove an element by its key. Luckily, collections come with the "forget" method to do exactly that 🚀
 
@@ -2479,7 +2463,7 @@ $collection->forget('name');
 $collection->all(); // ['framework' => 'laravel']
 ```
 
-## Tip #131 💡: Spell Numbers
+## Tip #130 💡: Spell Numbers
 
 Did you know that you can spell numbers in different locales using the "Number" helper that Laravel ships with? 🚀
 
@@ -2493,7 +2477,7 @@ $number = Number::spell(102); // one hundred and two
 $number = Number::spell(88, locale: 'fr'); // quatre-vingt-huit
 ```
 
-## Tip #132 💡: Human-readable Numbers
+## Tip #131 💡: Human-readable Numbers
 
 Sometimes you may want to format numbers for your users in a human-readable format. The "Number" helper allows you to do just that 🚀
 
@@ -2509,7 +2493,7 @@ $number = Number::forHumans(489939); // 490 thousand
 $number = Number::forHumans(1230000, precision: 2); // 1.23 million
 ```
 
-## Tip #133 💡: Skip Collection Items Until a Condition is Met
+## Tip #132 💡: Skip Collection Items Until a Condition is Met
 
 Sometimes, when working with collections, you may want to skip all the elements until a condition is met. Laravel comes with the "skipUntil" method to do exactly that 🚀
 
@@ -2525,7 +2509,7 @@ $subset = $collection->skipUntil(function (int $item) {
 $subset->all(); // [3, 4]
 ```
 
-## Tip #134 💡: The "zip" Collection Method
+## Tip #133 💡: The "zip" Collection Method
 
 When working with collections, you might want to merge two collections by their index, combining the values of the first index, then the second, and so on. Luckily, Laravel includes the "zip" method to do exactly that 🚀
 
@@ -2540,7 +2524,7 @@ $zipped = $collection->zip([100, 200]);
 $zipped->all(); // [['Chair', 100], ['Desk', 200]]
 ```
 
-## Tip #135 💡: The "WhenNotEmpty" Collection Method
+## Tip #134 💡: The "WhenNotEmpty" Collection Method
 
 While working with collections, you might want to execute some logic when the collection is not empty. Instead of manually checking, Laravel ships with a cool method, "whenNotEmpty()", to do exactly that 🚀
 
@@ -2564,7 +2548,7 @@ $collection->whenNotEmpty(function (Collection $collection) {
 $collection->all(); // []
 ```
 
-## Tip #136 💡: Send Concurrent Requests
+## Tip #135 💡: Send Concurrent Requests
 
 Laravel's HTTP client wraps Guzzle, which allows you to make concurrent requests to speed things up. This is very helpful for various cases, such as health checks! 🚀
 
@@ -2585,7 +2569,7 @@ return $responses[0]->ok() &&
        $responses[2]->ok();
 ```
 
-## Tip #137 💡: Search Collection Items
+## Tip #136 💡: Search Collection Items
 
 Did you know that Laravel allows you to search collection items? You can even pass a condition to search for the first element that meets it 🚀
 
@@ -2600,7 +2584,7 @@ $collection->search('4', strict: true); // false (not found)
 $collection->search(fn (int $item, int $key) => $item > 5); // 2 (the index)
 ```
 
-## Tip #138 💡: Disable Global Scopes
+## Tip #137 💡: Disable Global Scopes
 
 Laravel allows you to apply global scopes to your models, but sometimes you may wish to disable them for a specific query. You can do this by chaining the "withoutGlobalScope" method 🚀
 
@@ -2619,7 +2603,7 @@ User::withoutGlobalScopes([
 ])->get();
 ```
 
-## Tip #139 💡: Run Commands In Maintenance Mode
+## Tip #138 💡: Run Commands In Maintenance Mode
 
 When Laravel's maintenance mode is on, all scheduled commands won't run. If you wish to change this behavior, you can chain the "evenInMaintenanceMode()" method 🚀
 
@@ -2630,7 +2614,7 @@ When Laravel's maintenance mode is on, all scheduled commands won't run. If you 
 Schedule::command('emails:send')->evenInMaintenanceMode();
 ```
 
-## Tip #140 💡: Run Commands In the Background
+## Tip #139 💡: Run Commands In the Background
 
 Scheduled commands run sequentially. If you have a long-running task, it could take longer than anticipated and cause a delay for other tasks. Luckily, in such cases, you can use the "runInBackground" method 🚀
 
@@ -2644,7 +2628,7 @@ Schedule::command('analytics:report')
         ->runInBackground();
 ```
 
-## Tip #141 💡: The "literal" Helper
+## Tip #140 💡: The "literal" Helper
 
 Did you know that Laravel ships with a cool helper called "literal" that allows you to create a PHP object using named arguments? 🚀
 
@@ -2660,7 +2644,7 @@ $obj->name;      // 'Joe'
 $obj->languages; // ['PHP', 'Ruby']
 ```
 
-## Tip #142 💡: The "abort_if" Helper
+## Tip #141 💡: The "abort_if" Helper
 
 When writing middlewares, we often abort the request if a condition is met. For such cases, "abort_if" allows you to do exactly that! 🚀
 
@@ -2676,7 +2660,7 @@ if (!Auth::user()->isAdmin()) {
 abort_if(!Auth::user()->isAdmin(), 403);
 ```
 
-## Tip #143 💡: The "sole" Method
+## Tip #142 💡: The "sole" Method
 
 When working with collections, whether regular or Eloquent, if you want to get the first item that matches the condition and ensure it is the only one, use the "sole" method 🚀
 
@@ -2690,7 +2674,7 @@ collect([1, 2, 3, 4])->sole(fn (int $value, int $key) => $value === 2);
 collect([1, 2, 2, 4])->sole(fn (int $value, int $key) => $value === 2);
 ```
 
-## Tip #144 💡: Hash Passwords Automatically
+## Tip #143 💡: Hash Passwords Automatically
 
 When creating users, we often use the Hash facade, but did you know that Laravel comes with a "hashed" cast that will automatically hash your user's password? 🚀
 
@@ -2717,7 +2701,7 @@ $user = User::create([
 ]);
 ```
 
-## Tip #145 💡: The "createOr" Laravel
+## Tip #144 💡: The "createOr" Laravel
 
 Sometimes, you may want to execute some actions when no record is found, beyond just creating a new instance. The "createOr" method allows you to do exactly that 🚀
 
@@ -2734,7 +2718,7 @@ $user = User::where('email', $request->input('email'))->firstOr(function () {
 });
 ```
 
-## Tip #146 💡: Append and Prepend to files
+## Tip #145 💡: Append and Prepend to files
 
 When working with files, you may need to prepend or append content. Luckily, Laravel ships with two helpers to do exactly that 🚀
 
@@ -2746,7 +2730,7 @@ Storage::prepend('file.log', 'Prepended Text');
 Storage::append('file.log', 'Appended Text');
 ```
 
-## Tip #147 💡: Formatting to Percentages
+## Tip #146 💡: Formatting to Percentages
 
 Did you know Laravel ships with a "percentage" helper to get the percentage of any representative value? 🚀
 
@@ -2764,7 +2748,7 @@ $percentage = Number::percentage(10.123, maxPrecision: 2); // 10.12%
 $percentage = Number::percentage(10, precision: 2, locale: 'de'); // 10,00%
 ```
 
-## Tip #148 💡: Formatting to a Human-Readable File Size
+## Tip #147 💡: Formatting to a Human-Readable File Size
 
 Did you know Laravel ships with a "fileSize" helper to get the file size representation of a given byte value as a string? 🚀
 
@@ -2780,7 +2764,7 @@ $size = Number::fileSize(1024 * 1024); // 1 MB
 $size = Number::fileSize(1024, precision: 2); // 1.00 KB
 ```
 
-## Tip #149 💡: Freeze Time
+## Tip #148 💡: Freeze Time
 
 When writing tests, we sometimes need to "freeze" time to make assertions. Laravel provides an elegant method "freezeTime" to do exactly that 🚀
 
@@ -2794,7 +2778,7 @@ Carbon::setTestNow(now());
 $this->freezeTime();
 ```
 
-## Tip #150 💡: Log Out Other Devices
+## Tip #149 💡: Log Out Other Devices
 
 When users log out, you might want to ask them if they want to log out from other devices while keeping the current one. Luckily, Laravel ships with the "logoutOtherDevices" method that does exactly that 🚀
 
@@ -2806,7 +2790,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::logoutOtherDevices($currentPassword);
 ```
 
-## Tip #151 💡: Working with Base64 Strings
+## Tip #150 💡: Working with Base64 Strings
 
 We often work with Base64 strings, especially when building API integrations. Laravel comes with built-in helpers to work with Base64 right out of the box 🚀
 
@@ -2822,7 +2806,7 @@ $base64 = Str::fromBase64('TGFyYXZlbA=='); // Laravel
 $base64 = str('TGFyYXZlbA==')->fromBase64(); // Laravel
 ```
 
-## Tip #152 💡: The "abort_unless" Helper
+## Tip #151 💡: The "abort_unless" Helper
 
 When writing middlewares, we often need to abort the request if a condition is met. For such cases, "abort_unless" allows you to do exactly that! 🚀
 
@@ -2838,7 +2822,7 @@ if (!Auth::user()->isAdmin()) {
 abort_unless(Auth::user()->isAdmin(), 403);
 ```
 
-## Tip #153 💡: The "latest" and "oldest" Methods
+## Tip #152 💡: The "latest" and "oldest" Methods
 
 We often order models in ascending or descending order using the "orderBy" method. But did you know that Laravel comes with two methods, "latest" and "oldest," that do exactly that? 🚀
 
@@ -2858,7 +2842,7 @@ User::latest('id')->get();
 User::oldest('id')->get();
 ```
 
-## Tip #154 💡: Cache Headers On The Fly
+## Tip #153 💡: Cache Headers On The Fly
 
 Did you know that Laravel ships with a middleware "SetCacheHeaders", which you can use to set cache headers, such as "max_age" and "etag"? 🚀
 
@@ -2876,7 +2860,7 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
 });
 ```
 
-## Tip #155 💡: Insert Or Ignore
+## Tip #154 💡: Insert Or Ignore
 
 Sometimes, you might want to ignore errors when inserting data. Laravel comes with the "insertOrIgnore" method that does exactly that 🚀
 
@@ -2891,7 +2875,7 @@ DB::table('users')->insertOrIgnore([
 // insert ignore into `users` (`email`, `id`) values (?, ?), (?, ?)
 ```
 
-## Tip #156 💡: Schedule Shell Commands
+## Tip #155 💡: Schedule Shell Commands
 
 Did you know that the Laravel Scheduler allows you to execute commands in the operating system? 🚀
 
@@ -2903,7 +2887,7 @@ use Illuminate\Support\Facades\Schedule;
 Schedule::exec('node /home/forge/script.js')->daily();
 ```
 
-## Tip #157 💡: Typed Configs
+## Tip #156 💡: Typed Configs
 
 If you are using static analysis tools like PHPStan (which you should), you can make use of typed configs. Not only does this assist the tools, but it also ensures that the config matches the required type 🚀
 
@@ -2917,7 +2901,7 @@ Config::boolean('config-key'); // config()->boolean('config-key')
 Config::array('config-key'); // config()->array('config-key')
 ```
 
-## Tip #158 💡: Pluralize Words
+## Tip #157 💡: Pluralize Words
 
 Did you know that Laravel ships with the "plural" method to help you pluralize words? This is really helpful when you want to show a quantity-dependent message to your users. 🚀
 
@@ -2933,7 +2917,7 @@ $plural = Str::plural('car', count: 2); // cars
 $plural = str('child')->plural(); // children
 ```
 
-## Tip #159 💡: Generate Fake User Agents
+## Tip #158 💡: Generate Fake User Agents
 
 Since Laravel uses FakerPHP under the hood, you can generate fake user agents for your tests. 🚀
 
@@ -2962,7 +2946,7 @@ echo fake()->msedge();
 // Mozilla/5.0 (iPhone; CPU iPhone OS 13_1 like Mac OS X) AppleWebKit/535.2 (KHTML, like Gecko) Version/15.0 EdgiOS/98.01106.3 Mobile/15E148 Safari/535.2
 ```
 
-## Tip #160 💡: Ping URLs When Running Commands
+## Tip #159 💡: Ping URLs When Running Commands
 
 Did you know you can ping URLs before and after your command has run? This is really useful if you want to notify an external service or a webhook. 🚀
 
@@ -2975,7 +2959,7 @@ Schedule::command('emails:send')
     ->thenPing($webhookUrl);
 ```
 
-## Tip #161 💡: Find Many
+## Tip #160 💡: Find Many
 
 Did you know that you can pass multiple IDs to the `find()` method? Laravel also ships with a slightly more readable method, `findMany()`, which does the same thing! 🚀
 
@@ -2992,7 +2976,7 @@ $users = User::find([1, 2, 3]);
 $users = User::findMany([1, 2, 3]);
 ```
 
-## Tip #162 💡: Check If Your Model Has Changed Since Last Retrieval
+## Tip #161 💡: Check If Your Model Has Changed Since Last Retrieval
 
 Did you know Laravel ships with the `isDirty()` method, which allows you to check if one or more attributes have changed since the last time you retrieved the model? 🚀
 
@@ -3020,7 +3004,7 @@ $user->save();
 $user->isDirty(); // false
 ```
 
-## Tip #163 💡: Log Out The Current Device Only
+## Tip #162 💡: Log Out The Current Device Only
 
 Did you know that Laravel ships with the "logoutCurrentDevice" method, which allows you to log out only the currently authenticated device? 🚀
 
@@ -3032,7 +3016,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::logoutCurrentDevuce();
 ```
 
-## Tip #164 💡: Customize the Default Timestamp Columns
+## Tip #163 💡: Customize the Default Timestamp Columns
 
 Sometimes, you might need to customize the default timestamp columns, or you might already have an old table for which you are creating a model. Luckily, it is super simple to do so 🚀
 
@@ -3046,7 +3030,7 @@ class Flight extends Model
 }
 ```
 
-## Tip #165 💡: Prevent Filling Unfillable Attributes
+## Tip #164 💡: Prevent Filling Unfillable Attributes
 
 Did you know you can configure Laravel to throw an exception when attempting to fill an unfillable attribute? This is helpful during development to catch missed or forgotten attributes before getting to prod 🚀
 
@@ -3058,7 +3042,7 @@ use Illuminate\Database\Eloquent\Model;
 Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
 ```
 
-## Tip #166 💡: Create New Records or Update Existing Ones
+## Tip #165 💡: Create New Records or Update Existing Ones
 
 We've all been in a situation where we want to check if a record exists so we can update it, or create it if it does not. Laravel ships with the `updateOrCreate` method to do exactly that 🚀
 
@@ -3073,7 +3057,7 @@ $flight = Flight::updateOrCreate(
 );
 ```
 
-## Tip #167 💡: Delete (Destroy) Records
+## Tip #166 💡: Delete (Destroy) Records
 
 Did you know that Laravel ships with the `destroy` method, which allows you to delete records by their primary key? 🚀
 
@@ -3093,7 +3077,7 @@ Flight::destroy([1, 2, 3]); // arrays
 Flight::destroy(collect([1, 2, 3])); // and also collections!
 ```
 
-## Tip #168 💡: Time Travel in Your Tests
+## Tip #167 💡: Time Travel in Your Tests
 
 Did you know that Laravel comes with a cool time helper that allows you to travel into the future or the past in your tests? 🚀
 
@@ -3119,7 +3103,7 @@ $this->travelTo(now()->subHours(6));
 $this->travelBack();
 ```
 
-## Tip #169 💡: Cast Values On The Fly
+## Tip #168 💡: Cast Values On The Fly
 
 Sometimes you may need to apply casts while executing a query. Luckily, you can do that on the fly with the "withCasts" method that Laravel ships with 🚀
 
@@ -3136,7 +3120,7 @@ $users = User::select([
 ])->get();
 ```
 
-## Tip #170 💡: Extract Validated Input
+## Tip #169 💡: Extract Validated Input
 
 When working with validated input, we often need to extract only a few items from the request. Instead of manually unsetting or filtering, use Laravel's "safe()" method to do this elegantly 🚀
 
@@ -3150,7 +3134,7 @@ $validated = $request->safe()->except(['name', 'email']);
 $validated = $request->safe()->all();
 ```
 
-## Tip #171 💡: The "valueOrFail" Method
+## Tip #170 💡: The "valueOrFail" Method
 
 We often use the "firstOrFail" method to get a single value from the resulting model. Did you know that Laravel ships with the "valueOrFail" method, which allows you to do exactly that? 🚀
 
@@ -3165,7 +3149,7 @@ $flightName = $flight->name;
 $flightName = Flight::where('legs', '>', 3)->valueOrFail('name');
 ```
 
-## Tip #172 💡: The "to_route" Method
+## Tip #171 💡: The "to_route" Method
 
 We often redirect our users to specific routes using the "redirect()" method. Did you know there is a shorter and more expressive method called "to_route"? 🚀
 
@@ -3179,7 +3163,7 @@ return redirect()->route('profile');
 return to_route('profile');
 ```
 
-## Tip #173 💡: Generate Random Passwords
+## Tip #172 💡: Generate Random Passwords
 
 Did you know that Laravel ships with a "password" method that generates random, strong passwords? This is helpful when you want to suggest passwords for your users 🚀
 
@@ -3195,7 +3179,7 @@ $password = Str::password(); // '?;D7zlsMmZ87R0aBmIH.>GU77nagX26U'
 $password = Str::password(12); // 'q_2j00<#gr{'
 ```
 
-## Tip #174 💡: Abbreviate Numbers
+## Tip #173 💡: Abbreviate Numbers
 
 Did you know that Laravel ships with the "abbreviate" method, which allows you to format numbers in a human-readable way, with an abbreviation for the units? 🚀
 
@@ -3211,7 +3195,7 @@ $number = Number::abbreviate(489939); // 490K
 $number = Number::abbreviate(1230000, precision: 2); // 1.23M
 ```
 
-## Tip #175 💡: The New "chopStart" and "chopEnd" Methods
+## Tip #174 💡: The New "chopStart" and "chopEnd" Methods
 
 Laravel 11.14 introduces 2 new string helpers that allow you to remove characters from the beginning or end of a string 🚀
 
@@ -3224,7 +3208,7 @@ $url = Str::chopStart('http://laravel.com', ['https://', 'http://']); // 'larave
 $url = Str::chopEnd('app/Models/Photograph.php', '.php'); // 'app/Models/Photograph'
 ```
 
-## Tip #176 💡: Conditionally Adding Rules
+## Tip #175 💡: Conditionally Adding Rules
 
 When working with dynamic forms, you might want to validate certain inputs only if another input is checked. Laravel ships with the "exclude_if" validation rule, which does exactly that 🚀
 
@@ -3242,7 +3226,7 @@ $validator = Validator::make($data, [
 ]);
 ```
 
-## Tip #177 💡: Swap Multiple Strings
+## Tip #176 💡: Swap Multiple Strings
 
 When working with strings, we often need to find and replace occurrences of multiple strings. Laravel ships with an elegant method "swap" to do exactly that 🚀
 
@@ -3260,7 +3244,7 @@ $string = Str::swap([
 // $string: Burritos are fantastic!
 ```
 
-## Tip #178 💡: Shape Your Strings
+## Tip #177 💡: Shape Your Strings
 
 Since Laravel uses FakerPHP for generating fake data, you can use "lexify" to generate strings in a specific pattern 🚀
 
@@ -3272,7 +3256,7 @@ fake()->lexify(); // 'sakh', 'qwei', 'adsj'
 fake()->lexify('id-????'); // 'id-xoqe', 'id-pqpq', 'id-zpeu'
 ```
 
-## Tip #179 💡: Requests Fingerprints
+## Tip #178 💡: Requests Fingerprints
 
 Have you ever needed to code a unique identifier for a request, such as for caching purposes? Laravel ships with the "fingerprint" method that allows you to generate a unique identifier for your requests 🚀
 
@@ -3283,7 +3267,7 @@ Have you ever needed to code a unique identifier for a request, such as for cach
 request()->fingerprint() // fbb969117edfa916b86dfb67fd11decf1e336df0
 ```
 
-## Tip #180 💡: Retrieve and Delete Items From the Session
+## Tip #179 💡: Retrieve and Delete Items From the Session
 
 We often need to retrieve an item from the session and then delete it. While you can use the usual combo of get and forget, Laravel ships with the "pull" method that does exactly that 🚀
 
@@ -3299,7 +3283,7 @@ session()->forget('key');
 $value = session()->pull('key', 'default-value');
 ```
 
-## Tip #181 💡: Count the Words
+## Tip #180 💡: Count the Words
 
 Have you ever needed to count the words in a string? Laravel ships with the "countWords" method to do exactly that 🚀
 
@@ -3311,7 +3295,7 @@ use Illuminate\Support\Str;
 Str::wordCount('Okay, this helper is so cool!'); // 6
 ```
 
-## Tip #182 💡: The "last" and "head" helpers
+## Tip #181 💡: The "last" and "head" helpers
 
 Did you know that Laravel ships with two helpers, "last" and "head"? They allow you to retrieve the first and last elements of an array 🚀
 
@@ -3325,7 +3309,7 @@ $first = head($array); // 100
 $last = last($array); // 300
 ```
 
-## Tip #183 💡: Check Your Application Enviroment
+## Tip #182 💡: Check Your Application Enviroment
 
 We often need to check the application environment. While you can use the environment method to do so, Laravel ships with elegant methods "isProduction" and "isLocal" to do exactly that 🚀
 
@@ -3344,7 +3328,7 @@ app()->isProduction()
 // Also applies for 'local' environment with "isLocal()"
 ```
 
-## Tip #184 💡: Normalize Validated Data
+## Tip #183 💡: Normalize Validated Data
 
 Have you ever needed to normalize the validated data before using it? Laravel Form Requests come with a "passedValidation" hook which allows you to tweak the validated data 🚀
 
@@ -3362,7 +3346,7 @@ protected function passedValidation(): void
 }
 ```
 
-## Tip #185 💡: Filter Null Values
+## Tip #184 💡: Filter Null Values
 
 When working with arrays, we sometimes need to filter out null values. Laravel ships with an elegant helper "whereNotNull" to do exactly that 🚀
 
@@ -3376,7 +3360,7 @@ $array = [0, null, 'hello, world'];
 $filtered = Arr::whereNotNull($array); // [0 => 0, 2 => "hello, world"]
 ```
 
-## Tip #186 💡: Truncate Long Strings
+## Tip #185 💡: Truncate Long Strings
 
 Sometimes you may want to truncate long descriptions for display. Laravel ships with the "limit" method to do just that, and in the upcoming version, you can preserve whole words for a better UX 🚀
 
@@ -3395,7 +3379,7 @@ $before = Str::limit('We can preserve words', 8) // We can p...
 $after = Str::limit('We can preserve words', 8, preserveWords: true) // We can...
 ```
 
-## Tip #187 💡: The "firstWhere" Method
+## Tip #186 💡: The "firstWhere" Method
 
 We often need to get the first record matching a where statement. While "where()" combined with "first()" does the job, Laravel ships with a shortcut "firstWhere()" to do exactly that 🚀
 
@@ -3409,7 +3393,7 @@ $user = User::query()->where('name', 'john')->first();
 $user = User::query()->firstWhere('name', 'john');
 ```
 
-## Tip #188 💡: Exclude Middleware
+## Tip #187 💡: Exclude Middleware
 
 Sometimes you may need to exclude a middleware from a specific route. You can do this using the "withoutMiddleware()" method 🚀
 
@@ -3429,7 +3413,7 @@ Route::middleware([EnsureTokenIsValid::class])->group(function () {
 });
 ```
 
-## Tip #189 💡: Work with IPs
+## Tip #188 💡: Work with IPs
 
 Sometimes you may need to work with IP addresses. Laravel uses the HttpFoundation component from Symfony under the hood, which comes with useful IP helpers 🚀
 
@@ -3443,7 +3427,7 @@ IpUtils::isPrivateIp($ipv4); // true, works with IPv6 as well
 IpUtils::anonymize($ipv4); // '192.168.1.0', works with IPv6 as well
 ```
 
-## Tip #190 💡: Assert JSON Fragments
+## Tip #189 💡: Assert JSON Fragments
 
 When testing APIs, we often need to check if the response contains a specific key with the expected data. Laravel ships with the "assertJsonFragment" to do exactly that 🚀
 
@@ -3463,7 +3447,7 @@ Route::get('/users', function () {
 $response->assertJsonFragment(['name' => 'John Doe']);
 ```
 
-## Tip #191 💡: A Better Content Negotiation
+## Tip #190 💡: A Better Content Negotiation
 
 Sometimes you might have multiple response formats that you return. You can use the "getAcceptableContentTypes" method to map your response to what's best for the user 🚀
 
@@ -3484,7 +3468,7 @@ request()->getAcceptableContentTypes();
 // ];
 ```
 
-## Tip #192 💡: Magic Factories Methods
+## Tip #191 💡: Magic Factories Methods
 
 We use factories a lot. Did you know about the for[Relation] and has[Relation] magic methods? You just need to make sure you have the relationship set up in your model and you are set 🚀
 
@@ -3507,7 +3491,7 @@ $posts = Post::factory()
     ->create();
 ```
 
-## Tip #193 💡: Generate Fake Credit Card Numbers
+## Tip #192 💡: Generate Fake Credit Card Numbers
 
 Since Laravel uses FakerPHP under the hood, you can generate fake credit card numbers for your tests 🚀
 
@@ -3524,7 +3508,7 @@ fake()->creditCardNumber('Visa', formatted: true); // 4147-6288-3196-0830
 fake()->creditCardType(); // MasterCard
 ```
 
-## Tip #194 💡: Generate Currency Code
+## Tip #193 💡: Generate Currency Code
 
 Since Laravel uses FakerPHP under the hood, you can generate random currency codes. This is really useful for fintech apps 🚀
 
@@ -3535,7 +3519,7 @@ fake()->currencyCode();
 // 'TND', 'AED', 'SAR', 'KZT'
 ```
 
-## Tip #195 💡: Type Hinting for Blade
+## Tip #194 💡: Type Hinting for Blade
 
 We use Blade a lot, and if I have one thing to complain about, it's type hints. However, we can solve this issue by defining a @php block for all the variables used 🚀
 
@@ -3550,7 +3534,7 @@ We use Blade a lot, and if I have one thing to complain about, it's type hints. 
 </div>
 ```
 
-## Tip #196 💡: Validate Dates Elegantly
+## Tip #195 💡: Validate Dates Elegantly
 
 Did you know that when validating dates with Laravel, you can pass strings like "today" or "tomorrow" instead of actual dates? This makes the validation rules much more readable 🚀
 
@@ -3566,7 +3550,7 @@ $rules = [
 ];
 ```
 
-## Tip #197 💡: Prevent N+1 Issues
+## Tip #196 💡: Prevent N+1 Issues
 
 Eager loading can significantly improve performance. Use the "preventLazyLoading" method to ensure all relationships are eager-loaded during development and customize its behavior for violations 🚀
 
@@ -3590,7 +3574,7 @@ public function boot(): void
 }
 ```
 
-## Tip #198 💡: Check if valid JSON
+## Tip #197 💡: Check if valid JSON
 
 We often need to check if a given string is valid JSON. Laravel provides an elegant method, "isJson", to help you with this. It uses the new "json_validate" function in PHP 8.3, and "json_decode" for earlier versions 🚀
 
@@ -3610,7 +3594,7 @@ Str::isJson('{"first": "John", "last": "Doe"}'); // true
 Str::isJson('{first: "John", last: "Doe"}'); // false
 ```
 
-## Tip #199 💡: Count words occurances
+## Tip #198 💡: Count words occurances
 
 Ever needed to count the occurrences of a word in a sentence? Laravel ships with the "substrCount" method to do exactly that 🚀
 
@@ -3622,7 +3606,7 @@ use Illuminate\Support\Str;
 Str::substrCount('My name is Bond, James Bond', 'Bond'); // 2
 ```
 
-## Tip #200 💡: Shortcuts for Dropping Columns
+## Tip #199 💡: Shortcuts for Dropping Columns
 
 Need to drop some framework-specific columns? You don’t have to specify them manually, Laravel provides shortcuts to do exactly that 🚀
 
@@ -3644,7 +3628,7 @@ Schema::table('users', function (Blueprint $table) {
 });
 ```
 
-## Tip #201 💡: Deduplicate Characters
+## Tip #200 💡: Deduplicate Characters
 
 Laravel v11.20 introduces a new "deduplicate" method which allows you to remove duplicates from spaces or any character you choose 🚀
 
@@ -3655,7 +3639,7 @@ Str::deduplicate('Laravel Framework') // Laravel Framework
 Str::deduplicate('Laravel Frameworkkkkk', 'k') // Laravel Framework
 ```
 
-## Tip #202 💡: Ensure Env Keys Exist
+## Tip #201 💡: Ensure Env Keys Exist
 
 If you want to be absolutely sure that a key exists in your .env file, use the "getOrFail()" method. It will throw a runtime exception if the key is missing. This is really useful for API keys 🚀
 
@@ -3675,7 +3659,7 @@ return [
 // "Environment variable [POSTMARK_TOKEN] has no value."
 ```
 
-## Tip #203 💡: Customize the Redirect Location
+## Tip #202 💡: Customize the Redirect Location
 
 We often use form requests for validation. Did you know you can customize the redirect location upon failure? You are never limited to redirecting users back to the previous page 🚀
 
@@ -3692,7 +3676,7 @@ protected $redirectRoute = 'dashboard';
 protected $redirectAction = [DashboardController::class, 'index'];
 ```
 
-## Tip #204 💡: Invisible Columns
+## Tip #203 💡: Invisible Columns
 
 If you are using MySQL/MariaDB as your database, you can leverage invisible columns. These columns remain hidden in 'SELECT * ' statements, which is perfect for handling sensitive information and precomputed data 🚀
 
@@ -3720,7 +3704,7 @@ $user = User::select('secret')->first();
 $user->secret; // SUEGQs8klF30CLSi
 ```
 
-## Tip #205 💡: Schedule Commands on Specific Environments
+## Tip #204 💡: Schedule Commands on Specific Environments
 
 Did you know that you can schedule your commands for specific environments? If you frequently use "schedule:work", you'll find this helpful for excluding commands from the dev environment 🚀
 
@@ -3734,7 +3718,7 @@ Schedule::command('newsletter:send')
     ->weekends();
 ```
 
-## Tip #206 💡: Get Bearer Tokens Elegantly
+## Tip #205 💡: Get Bearer Tokens Elegantly
 
 Building an API with Laravel? You can retrieve the bearer token using the "bearerToken" method on the request object without having to manually parse it 🚀
 
@@ -3748,7 +3732,7 @@ $token = substr(request()->header('Authorization'), 7);
 $token = request()->bearerToken();
 ```
 
-## Tip #207 💡: Skip Relationships in Queues
+## Tip #206 💡: Skip Relationships in Queues
 
 When passing a model to a job, consider using the "WithoutRelations" attribute to skip serializing the relationships if you don't need them. This will keep the payload minimal and memory efficient 🚀
 
@@ -3763,7 +3747,7 @@ public function __construct(
 ) {}
 ```
 
-## Tip #208 💡: Generated Columns
+## Tip #207 💡: Generated Columns
 
 Did you know that Laravel can handle generated columns in migrations out of the box? No need to write raw SQL in your migration to create these columns 🚀
 
@@ -3789,7 +3773,7 @@ return new class extends Migration
 };
 ```
 
-## Tip #209 💡: Disable Model Events When Seeding
+## Tip #208 💡: Disable Model Events When Seeding
 
 In most cases, when seeding the database, you don't need to fire model events. You can use the "WithoutModelEvents" trait to mute those events, making your seeders slightly faster 🚀
 
@@ -3816,7 +3800,7 @@ class DatabaseSeeder extends Seeder
 }
 ```
 
-## Tip #210 💡: Lazily Refresh Your Database
+## Tip #209 💡: Lazily Refresh Your Database
 
 We often need to refresh the database when testing the code. In such cases, you can lazily refresh your database, so migrations are run only when you are hitting the db. This will help speed up your tests 🚀
 
@@ -3843,7 +3827,7 @@ class ExampleTest extends TestCase
 }
 ```
 
-## Tip #211 💡: Use Default Models
+## Tip #210 💡: Use Default Models
 
 When working with "hasOne" or "belongsTo" relationships, we often check whether they are nullable before accessing their properties. In such cases, you can use default models to ensure you never get null values 🚀
 
@@ -3864,7 +3848,7 @@ Post::first()->user->name ?? 'Guest Author'; // 'Guest Author'
 Post::first()->user->name; // 'Guest Author'
 ```
 
-## Tip #212 💡: Permanently Delete Soft-Deleted Models
+## Tip #211 💡: Permanently Delete Soft-Deleted Models
 
 Sometimes you may want to permanently remove soft-deleted models. You can use "forceDelete()" for that, or the new "forceDestroy()" method introduced in Laravel v11.21 🚀
 
@@ -3879,7 +3863,7 @@ $flight->forceDelete();
 Flight::forceDestroy(1); // You can also pass an array of IDs
 ```
 
-## Tip #213 💡: Exclude Validated Input
+## Tip #212 💡: Exclude Validated Input
 
 Sometimes, you may want to exclude an input from the validated array. Instead of manually unsetting it, you can use the "exclude" rule, which does exactly that 🚀
 
@@ -3898,7 +3882,7 @@ public function store(Request $request): RedirectResponse
 }
 ```
 
-## Tip #214 💡: Filter Only Real Emails
+## Tip #213 💡: Filter Only Real Emails
 
 Tired of high bounce rates from invalid emails? Laravel comes with the "dns" validation rule to ensure you're getting real emails. It won't magically fix the issue, but it definitely improves deliverability  🚀
 
@@ -3917,7 +3901,7 @@ public function store(Request $request): RedirectResponse
 // valid DNS records.
 ```
 
-## Tip #215 💡: Better Error Messages for Arrays
+## Tip #214 💡: Better Error Messages for Arrays
 
 When validating arrays, it's a better UX to tell the user which item has failed rather than throwing a generic message. For this, you can use the ":index" and ":position" placeholders 🚀
 
@@ -3937,7 +3921,7 @@ $validator = Validator::make($request->all(), [
 // you can use :second-index, :second-position, :third-index, :third-position
 ```
 
-## Tip #216 💡: The "checked" Blade Directive
+## Tip #215 💡: The "checked" Blade Directive
 
 Often, we need to conditionally mark an input as checked. While this can be done manually, Laravel provides a cool blade directive "checked" to do exactly that 🚀
 
@@ -3947,7 +3931,7 @@ Often, we need to conditionally mark an input as checked. While this can be done
     @checked(old('active', $user->active)) />
 ```
 
-## Tip #217 💡: Filter Falsy Values
+## Tip #216 💡: Filter Falsy Values
 
 We've all used the "filter" method on collections, but did you know that if no callback is passed, it will filter out all the falsy values? 🚀
 
@@ -3958,7 +3942,7 @@ $collection = collect([1, 2, 3, null, false, '', 0, []]);
 $collection->filter()->all(); // [1, 2, 3]
 ```
 
-## Tip #218 💡: Get Only Trashed Records
+## Tip #217 💡: Get Only Trashed Records
 
 When working with soft-deleted models, you may need to get only the trashed records. While you can manually filter the query using the "deleted_at" column, there's an "onlyTrashed()" method to do exactly that 🚀
 
@@ -3972,7 +3956,7 @@ $trashedUsers = User::query()->whereNotNull('deleted_at')->get();
 $trashedUsers = User::query()->onlyTrashed()->get();
 ```
 
-## Tip #219 💡: A Better Implode
+## Tip #218 💡: A Better Implode
 
 We've all used PHP's "implode" function, but did you know about the "join" helper? It does the same thing but also allows you to customize the last separator 🚀
 
@@ -3990,7 +3974,7 @@ collect(['a'])->join(', ', ', and '); // 'a'
 collect([])->join(', ', ', and '); // ''
 ```
 
-## Tip #220 💡: Bulk Dispatch
+## Tip #219 💡: Bulk Dispatch
 
 While Laravel offers batches to dispatch jobs, sometimes you just want to fire and forget. In that case, you can bulk dispatch instead of doing it one by one 🚀
 
@@ -4005,7 +3989,7 @@ $jobs = $users->map(fn(User $user) => new GenerateInvoice($user))->toArray();
 Queue::bulk($jobs);
 ```
 
-## Tip #221 💡: Safer Passwords for Users
+## Tip #220 💡: Safer Passwords for Users
 
 Users tend to use the same password for all websites, which puts them in danger if their password has been leaked. You can make sure that the user inputs an uncompromised password using the "uncompromised" rule 🚀
 
@@ -4021,7 +4005,7 @@ Password::min(8)
     ->uncompromised()
 ```
 
-## Tip #222 💡: The  Conditionable Trait
+## Tip #221 💡: The  Conditionable Trait
 
 Do you find yourself writing multiple if statements to call different methods on a class? Consider making your class "conditionable" by using Laravel's "Conditionable" trait 🚀
 
@@ -4065,7 +4049,7 @@ $notificationService
     ->when($shouldSendSms, fn(NotificationService $service) => $service->sendSmsNotification());
 ```
 
-## Tip #223 💡: Run Seeders During Tests
+## Tip #222 💡: Run Seeders During Tests
 
 Did you know you can run database seeders within your tests? This allows you to keep your tests clean by moving setup logic to seeders 🚀
 
@@ -4092,7 +4076,7 @@ test('orders can be created', function () {
 });
 ```
 
-## Tip #224 💡: Faker's "randomDigitNot()"
+## Tip #223 💡: Faker's "randomDigitNot()"
 
 When defining factories, you may sometimes need to generate a random digit while excluding a specific one. Since Laravel uses FakerPHP under the hood, you can use "randomDigitNot" to do exactly that 🚀
 
@@ -4106,7 +4090,7 @@ fake()->randomDigit();
 fake()->randomDigitNot(3); // This will return any digit from 0 to 9, except 3
 ```
 
-## Tip #225 💡: Add Multiple Columns After Another
+## Tip #224 💡: Add Multiple Columns After Another
 
 Did you know that you can add multiple columns after a specific column using the "after" method?  🚀
 
@@ -4122,7 +4106,7 @@ Schema::table('users', function (Blueprint $table) {
 });
 ```
 
-## Tip #226 💡: Auto Capitalize Your Translations
+## Tip #225 💡: Auto Capitalize Your Translations
 
 Did you know that not only can you parameterize your translation strings, but you can also auto-capitalize them? 🚀
 
@@ -4140,7 +4124,7 @@ echo __('messages.welcome', ['name' => 'dayle']); // Welcome, DAYLE
 echo __('messages.goodbye', ['name' => 'dayle']); // Goodbye, Dayle
 ```
 
-## Tip #227 💡: Connect to Your DB via Artisan
+## Tip #226 💡: Connect to Your DB via Artisan
 
 Ever needed to quickly connect to your database via the CLI? There’s an Artisan command to do exactly that! 🚀
 
@@ -4152,7 +4136,7 @@ php artisan db
 php artisan db mysql
 ```
 
-## Tip #228 💡: Cache Accessor Result
+## Tip #227 💡: Cache Accessor Result
 
 When working with accessors, objects are cached by default. However, if you have a computationally intensive accessor for a primitive value, like a string, you can enable caching for it using the "shouldCache()" method 🚀
 
@@ -4168,7 +4152,7 @@ protected function hash(): Attribute
 }
 ```
 
-## Tip #229 💡: Ensure Proper Table Name in Migrations
+## Tip #228 💡: Ensure Proper Table Name in Migrations
 
 When creating migrations, we sometimes don't format the name in a way that Laravel can understand to fill in the table name. However, you can always specify it manually 🚀
 
@@ -4199,7 +4183,7 @@ return new class extends Migration
 };
 ```
 
-## Tip #230 💡: On-Demand Notifications
+## Tip #229 💡: On-Demand Notifications
 
 Sometimes, you may want to send notifications to "anonymous" users who are not yet stored in the database. Laravel's "route" method allows you to do exactly that 🚀
 
@@ -4215,7 +4199,7 @@ Notification::route('mail', 'john@example.com')
     ->notify(new InvoicePaid($invoice));
 ```
 
-## Tip #231 💡: Cool Artisan DB Commands
+## Tip #230 💡: Cool Artisan DB Commands
 
 Have you ever needed to check if your db connection is working as expected? Or wondered how many open connections you have? Maybe you want to know the total size of a db? Well, Artisan comes with some cool commands to do exactly that 🚀
 
@@ -4230,7 +4214,7 @@ php artisan db:monitor
 php artisan db:show
 ```
 
-## Tip #232 💡: The Pipeline Helper
+## Tip #231 💡: The Pipeline Helper
 
 Often, we need to process input through multiple steps, such as applying request filters to a query or cleaning data in a multi-stage chain. When you find yourself in such cases, use Laravel's Pipeline helper 🚀
 
@@ -4257,7 +4241,7 @@ class GenerateProfilePhoto
 }
 ```
 
-## Tip #233 💡: Skip Jobs When Batch is Cancelled
+## Tip #232 💡: Skip Jobs When Batch is Cancelled
 
 When working with batched jobs, it's best to check if the batch is canceled before running the job, and you don't have to do it manually because the "SkipIfBatchCancelled" middleware does exactly this 🚀
 
@@ -4280,7 +4264,7 @@ public function middleware(): array
 }
 ```
 
-## Tip #234 💡: The "whereLike" method
+## Tip #233 💡: The "whereLike" method
 
 We often use "where like" statements in our apps. Did you know Laravel ships with a "whereLike" method, which takes it a step further by allowing the like statement to be case insensitive? 🚀
 
@@ -4297,7 +4281,7 @@ User::query()->whereLike('name', 'Jo%', caseSensitive: true)->get();
 // Query: select * from `users` where `name` like binary 'Jo%'
 ```
 
-## Tip #235 💡: The "tap" Helper
+## Tip #234 💡: The "tap" Helper
 
 How many times have you needed to return an object right after a basic action? Yes many times I know. The "tap" helper allows you to do just that 🚀
 
@@ -4314,7 +4298,7 @@ public function markAsPaid(): self
 }
 ```
 
-## Tip #236 💡: Using Multiple IDs and Specific Columns with "find"
+## Tip #235 💡: Using Multiple IDs and Specific Columns with "find"
 
 We often use "find()", but did you know you can pass an array of IDs and also select specific columns? 🚀
 
@@ -4325,7 +4309,7 @@ User::find(id: [1, 2], columns: ['email']);
 // select `email` from `users` where `users`.`id` in (1, 2)
 ```
 
-## Tip #237 💡: Execute Tasks Concurrently
+## Tip #236 💡: Execute Tasks Concurrently
 
 Starting from Laravel v11.23, you can execute tasks concurrently. This can speed things up when you have independent tasks that can be run simultaneously 🚀
 
@@ -4340,7 +4324,7 @@ Concurrency::defer([
 ]);
 ```
 
-## Tip #238 💡: Load Relationship Count on the Fly
+## Tip #237 💡: Load Relationship Count on the Fly
 
 When working with models, you might need the count of a relationship. If you forget to eager load it, you can always use "loadCount" to load the count on the fly 🚀
 
@@ -4358,7 +4342,7 @@ $user->loadCount('posts', fn(Builder $query) => $query->whereNull('published'));
 $user->posts_count
 ```
 
-## Tip #239 💡: The Required If Accepted Rule
+## Tip #238 💡: The Required If Accepted Rule
 
 When validating forms, sometimes you want to conditionally require a field if another one was filled. Laravel ships with "required_if_accepted" to do exactly that 🚀
 
@@ -4371,7 +4355,7 @@ $validator = Validator::make($data, [
 ]);
 ```
 
-## Tip #240 💡: Ask for Confirmation in Commands
+## Tip #239 💡: Ask for Confirmation in Commands
 
 Did you know that you can request confirmation for risky commands before executing them? You can do this using the "confirm" method 🚀
 
@@ -4391,7 +4375,7 @@ $this->components->confirm('Do you want to continue?');
  */
 ```
 
-## Tip #241 💡: Skip Jobs
+## Tip #240 💡: Skip Jobs
 
 Ever needed to skip job execution? While you can do it manually, Laravel ships with a "Skip" middleware to do exactly that 🚀
 
@@ -4410,7 +4394,7 @@ public function middleware(): array
 }
 ```
 
-## Tip #242 💡: A Better dd()
+## Tip #241 💡: A Better dd()
 
 When debugging an Eloquent query, we often use "dd()" to check the result. Did you know you can just chain it directly? 🚀
 
@@ -4425,7 +4409,7 @@ dd($users);
 User::all()->dd();
 ```
 
-## Tip #243 💡: The "today()" Helper
+## Tip #242 💡: The "today()" Helper
 
 Sometimes you may want to get today's date. While you can do this in multiple ways, Laravel ships with a readable "today()" helper to do exactly that. You can pass timezones and chain other helpful methods as well 🚀
 
@@ -4446,7 +4430,7 @@ today()->isMidday(); // false
 today($timezeone);
 ```
 
-## Tip #244 💡: Show Model Infos
+## Tip #243 💡: Show Model Infos
 
 When a model grows, it can be hard to check all the relationships, including those from third-party packages, the registered events, and the observers. When that's the case, you can use the "model:show" command instead 🚀
 
@@ -4456,7 +4440,7 @@ php artisan model:show User
 # This will list: The table, attributes, relationships, events and observers.
 ```
 
-## Tip #245 💡: Send All Mail to a Specific Email
+## Tip #244 💡: Send All Mail to a Specific Email
 
 Ever needed to send all mails to a single address? Whether you're working in a specific environment or managing a small project with just one contact email, you can use the "alwaysTo" method to do exactly that 🚀
 
@@ -4473,7 +4457,7 @@ public function boot(): void
 }
 ```
 
-## Tip #246 💡: Move Column to First Position
+## Tip #245 💡: Move Column to First Position
 
 Did you know you can move a column to the first position in your table, even if it was added later on? Use the "first()" method to do that 🚀
 
@@ -4485,7 +4469,7 @@ Schema::table('posts', function (Blueprint $table) {
 });
 ```
 
-## Tip #247 💡: Use the "set" Method in Factories
+## Tip #246 💡: Use the "set" Method in Factories
 
 Sometimes you may want to override or pass a single attribute to your factory. While you can pass a whole array for that, you can use the "set" method, which does exactly that 🚀
 
@@ -4501,7 +4485,7 @@ User::factory()
     ->create();
 ```
 
-## Tip #248 💡: The New Flexible Cache Method
+## Tip #247 💡: The New Flexible Cache Method
 
 Starting with Laravel v11.23.0, you can use the new "flexible" method for caching. If you've struggled with revalidating your cache before it expires, make use of it 🚀
 
@@ -4514,7 +4498,7 @@ Starting with Laravel v11.23.0, you can use the new "flexible" method for cachin
 $value = Cache::flexible('users', [5, 10], fn () => User::all());
 ```
 
-## Tip #249 💡: Higher Order Messages
+## Tip #248 💡: Higher Order Messages
 
 When working with Laravel collections, remember that they come with higher order messages, which are shortcuts for the most common actions 🚀
 
@@ -4532,7 +4516,7 @@ $users->each(fn(User $user) => $user->markAsVip());
 $users->each->markAsVip();
 ```
 
-## Tip #250 💡: A Better Pluck
+## Tip #249 💡: A Better Pluck
 
 We often need to get the IDs of some models. While you can use the "pluck()" method to do this, you can also use "modelKeys()", which reads better and won't break if you change the primary key at any point 🚀
 
@@ -4548,7 +4532,7 @@ $ids = User::all()->pluck('id');
 $ids = User::all()->modelKeys();
 ```
 
-## Tip #251 💡: Laravel's Signed Routes
+## Tip #250 💡: Laravel's Signed Routes
 
 A reminder that Laravel ships with signed routes. They are perfect for magic login links, temporary access, and one-time actions like unsubscribing users, all in a safe way by making sure the URL isn't tampered with 🚀
 
@@ -4572,7 +4556,7 @@ URL::temporarySignedRoute(
 // unsubscribe?expires=1727640587&user=1&signature=f71fa139fe2...515fe111a8
 ```
 
-## Tip #252 💡: Get the Age of a Date
+## Tip #251 💡: Get the Age of a Date
 
 Since Laravel uses Carbon under the hood, you can easily get the age of a parsed date 🚀
 
@@ -4588,7 +4572,7 @@ $laravelsAge = Carbon::parse('01-06-2011')->age;
 $age = User::first()->birthday->age;
 ```
 
-## Tip #253 💡: Latest of Many
+## Tip #252 💡: Latest of Many
 
 Have you ever needed to get the latest record from a one to many relationship? While you can use subqueries to do this, Laravel already ship with the "latestOfMany" method to do exactly that 🚀
 
@@ -4610,7 +4594,7 @@ $latestOrder = $user->latestOrder;
 $users = User::with('latestOrder')->get();
 ```
 
-## Tip #254 💡: A Cleaner Eager Loading Syntax
+## Tip #253 💡: A Cleaner Eager Loading Syntax
 
 Sometimes, when need to eager load nested relationships, and for that we the use dot notation. But did you know you can also pass nested arrays? 🚀
 
@@ -4632,7 +4616,7 @@ $books = Book::with([
 ])->get();
 ```
 
-## Tip #255 💡: Get the Closest and Farthest Dates
+## Tip #254 💡: Get the Closest and Farthest Dates
 
 Ever needed to get the closest or farthest of two dates compared to a given date? Since Laravel uses Carbon under the hood, you can do that with the "closest" and "farthest" methods 🚀
 
@@ -4650,7 +4634,7 @@ $date->closest($date1, $date2); // 2024-05-16
 $date->farthest($date1, $date2); // 2024-01-01
 ```
 
-## Tip #256 💡: Define Command Aliases
+## Tip #255 💡: Define Command Aliases
 
 We've all created custom Artisan commands for different purposes. While it's great to have an expressive signature, if you're using the command often, you can define an alias for it 🚀
 
@@ -4673,7 +4657,7 @@ class BillReminder extends Command
 // php artisan rb
 ```
 
-## Tip #257 💡: File Checksum
+## Tip #256 💡: File Checksum
 
 Ever needed to generate a checksum for a file to check if it has been tampered with or simply to track changes over time? Laravel ships with the "checksum" method to do exactly that! 🚀
 
@@ -4684,7 +4668,7 @@ Ever needed to generate a checksum for a file to check if it has been tampered w
 Storage::checksum('/path/to/file', ['checksum_algo' => 'sha1']);
 ```
 
-## Tip #258 💡: Validate Image Dimensions
+## Tip #257 💡: Validate Image Dimensions
 
 Ever needed to validate the dimensions of an image, like an avatar? Laravel comes with built-in validation rules for this. You can use the "dimensions" rule to build your validation logic 🚀
 
@@ -4702,7 +4686,7 @@ Validator::make($data, [
 ]);
 ```
 
-## Tip #259 💡: The "shortRelativeDiffForHumans" Method
+## Tip #258 💡: The "shortRelativeDiffForHumans" Method
 
 I'm sure you've used the "diffForHumans" method to get a human-readable date. But did you know you can get a shorter version using the "shortRelativeDiffForHumans" method? 🚀
 
@@ -4715,7 +4699,7 @@ now()->subDays(5)->diffForHumans(); // 5 days ago
 now()->subDays(5)->shortRelativeDiffForHumans(); // 5d ago
 ```
 
-## Tip #260 💡: The "finish" Helper
+## Tip #259 💡: The "finish" Helper
 
 Sometimes, you might need to ensure that a string ends with a specific character, like a slash or a dot. Laravel ships with the "finish" helper to do exactly that 🚀
 
@@ -4730,7 +4714,7 @@ Str::finish('this/string/', '/'); // this/string/
 
 ```
 
-## Tip #261 💡: The "diffInDaysFiltered" Method
+## Tip #260 💡: The "diffInDaysFiltered" Method
 
 Ever needed to count the days between 2 dates while filtering some based on a condition? Since Laravel uses Carbon under the hood, you can use "diffInDaysFiltered" to doexactly that 🚀
 
@@ -4746,7 +4730,7 @@ $weekdays = $start->diffInDaysFiltered(fn (Carbon $date) => !$date->isWeekend(),
 $weekdays; // 8
 ```
 
-## Tip #262 💡: The "prohibitedIf" Rule
+## Tip #261 💡: The "prohibitedIf" Rule
 
 Sometimes, you may want to "prohibit" a field from having data based on a condition, such as the presence of another field. Laravel ships with the "prohibitedIf" rule to do exactly that 🚀
 
@@ -4767,7 +4751,7 @@ Validator::make($request->all(), [
 ]);
 ```
 
-## Tip #263 💡: URI Templates
+## Tip #262 💡: URI Templates
 
 Since Laravel uses Guzzle under the hood, you can use URI templates with Laravel's HTTP Client by calling the "withUrlParameters" method 🚀
 
@@ -4783,7 +4767,7 @@ Http::withUrlParameters([
 ])->get('{+endpoint}/{page}/{version}/{topic}');
 ```
 
-## Tip #264 💡: The "isBirthday" Method
+## Tip #263 💡: The "isBirthday" Method
 
 Ever needed to check whether a date is someone's birthday? Since Laravel uses Carbon under the hood, you can use the "isBirthday" method to do exactly that 🚀
 
@@ -4801,7 +4785,7 @@ $born->isBirthday($noCake); // false
 $born->isBirthday($yesCake); // true
 ```
 
-## Tip #265 💡: Global Request Middleware
+## Tip #264 💡: Global Request Middleware
 
 When consuming APIs, you may want to apply a specific user agent to all your outgoing requests. This can make debugging easier later on. Laravel ships with global request middleware to do exactly that 🚀
 
@@ -4819,7 +4803,7 @@ Http::globalResponseMiddleware(fn ($response) => $response->withHeader(
 ));
 ```
 
-## Tip #266 💡: The "headline" Method
+## Tip #265 💡: The "headline" Method
 
 Ever needed to convert a string to a title? Laravel ships with the "headline" method to do exactly that 🚀
 
@@ -4834,7 +4818,7 @@ Str::headline('EmailNotificationSent'); // Email Notification Sent
 str('a_cool_title')->headline();
 ```
 
-## Tip #267 💡: The New "optimizes" Method
+## Tip #266 💡: The New "optimizes" Method
 
 Laravel v11.27.1 introduced a new service provider method called "optimizes". You can now define commands to run with the "optimize" and "optimize:clear" commands, such as "filament:optimize" or other custom commands 🚀
 
@@ -4860,7 +4844,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-## Tip #268 💡: The "insertGetId" Method
+## Tip #267 💡: The "insertGetId" Method
 
 Have you ever found yourself needing the ID of a newly inserted row? Laravel ships with the "insertGetId" method to do exactly that 🚀
 
@@ -4874,7 +4858,7 @@ $id = DB::table('users')->insertGetId(
 dd($id); // The ID of the newly inserted row
 ```
 
-## Tip #269 💡: The "ddRawSql" Method
+## Tip #268 💡: The "ddRawSql" Method
 
 When debugging queries, we often use "dd()" or "toSql()", but did you know you can use "ddRawSql" to get the raw SQL with all bindings substituted? 🚀
 
@@ -4885,7 +4869,7 @@ DB::table('users')->where('votes', '>', 100)->ddRawSql();
 // "select * from `users` where `votes` > 100"
 ```
 
-## Tip #270 💡: The "expectsJson" Method
+## Tip #269 💡: The "expectsJson" Method
 
 If you have multiple clients and some of them only expect JSON, instead of manually checking the Accept header, you can use Laravel's built-in "expectsJson" method 🚀
 
@@ -4898,7 +4882,7 @@ if ($request->expectsJson()) {
 }
 ```
 
-## Tip #271 💡: The "mergeIfMissing" Method
+## Tip #270 💡: The "mergeIfMissing" Method
 
 Sometimes you may want to add additional input to the current request. While you can merge it manually, Laravel already ships with the "mergeIfMissing" method to do exactly that 🚀
 
@@ -4908,7 +4892,7 @@ Sometimes you may want to add additional input to the current request. While you
 $request->mergeIfMissing(['votes' => 0]);
 ```
 
-## Tip #272 💡: Email Command Failures Automatically
+## Tip #271 💡: Email Command Failures Automatically
 
 Did you know that Laravel ships with the "emailOutputOnFailure" method which automatically sends the output of a failed command to your email? 🚀
 
@@ -4922,7 +4906,7 @@ Schedule::command('report:generate')
          ->emailOutputOnFailure(config('contact.support'));
 ```
 
-## Tip #273 💡: Avoid Duplicate Queries
+## Tip #272 💡: Avoid Duplicate Queries
 
 We often eager load relationships manually using the "load" method. While this works, it can result in duplicate queries when the relationship is already loaded. This can be avoided by using the 'loadMissing' method 🚀
 
@@ -4936,7 +4920,7 @@ $users->load(['comments', 'posts']);
 $users->loadMissing(['comments', 'posts']);
 ```
 
-## Tip #274 💡: The New "CollectedBy" Attribute
+## Tip #273 💡: The New "CollectedBy" Attribute
 
 As of Laravel v11.28, instead of overriding the "newCollection" method, you can now use the new "CollectedBy" attribute to specify a custom collection for your model 🚀
 
@@ -4955,7 +4939,7 @@ class Post
 }
 ```
 
-## Tip #275 💡: Check if a User is a Guest
+## Tip #274 💡: Check if a User is a Guest
 
 We often need to check if a user is authenticated, and for that, we use the "check" method. But did you know that when you need to check if a user is a guest, you can use the "guest" method instead? 🚀
 
@@ -4973,7 +4957,7 @@ if (Auth::guest()) {
 }
 ```
 
-## Tip #276 💡: Aggregate Functions
+## Tip #275 💡: Aggregate Functions
 
 We often use "withCount" when working with relationships, but did you know other aggregate functions are available out of the box? For example, you can also use "sum", "min", and "max" functions 🚀
 
@@ -4991,7 +4975,7 @@ Post::withMin('comments', 'votes')->first(); // $post->comments_min_votes
 Post::withExists('comments')->first(); // $post->comments_exists_votes
 ```
 
-## Tip #277 💡: The "sometimes" Validation Rule
+## Tip #276 💡: The "sometimes" Validation Rule
 
 Have you ever needed to validate a field only if it's present, but skip it when it’s not? Laravel ships with the "sometimes" validation rule to do exactly that 🚀
 
@@ -5004,7 +4988,7 @@ $validator = Validator::make($data, [
 ]);
 ```
 
-## Tip #278 💡: Generate Fake Credit Card Details
+## Tip #277 💡: Generate Fake Credit Card Details
 
 Since Laravel uses FakerPHP to generate fake data, you can use the "creditCardDetails" method to generate fake credit cards for your tests 🚀
 
@@ -5031,7 +5015,7 @@ fake()->creditCardDetails(valid: false);
 // ]
 ```
 
-## Tip #279 💡: Sort Arrays Recursively
+## Tip #278 💡: Sort Arrays Recursively
 
 Have you ever needed to sort an array recursively, including all its sub arrays? Laravel ships with the "sortRecursive" method to do exactly that 🚀
 
@@ -5058,7 +5042,7 @@ Arr::sortRecursive($array);
 Arr::sortRecursiveDesc($array);
 ```
 
-## Tip #280 💡: The "data_forget" Helper
+## Tip #279 💡: The "data_forget" Helper
 
 Have you ever needed to unset data from nested arrays? It can get messy (and ugly) quickly. Laravel ships with the "data_forget" helper to do exactly that using the dot notation 🚀
 
@@ -5070,7 +5054,7 @@ $data = ['products' => ['desk' => ['price' => 100]]];
 data_forget($data, 'products.desk.price'); // ['products' => ['desk' => []]]
 ```
 
-## Tip #281 💡: The "hasHeader" Method
+## Tip #280 💡: The "hasHeader" Method
 
 Have you ever needed to check for a header? While you can do it manually, Laravel ships with the "hasHeader" method to do exactly that 🚀
 
@@ -5082,7 +5066,7 @@ if ($request->hasHeader('X-Header-Name')) {
 }
 ```
 
-## Tip #282 💡: The "aware" Blade Directive
+## Tip #281 💡: The "aware" Blade Directive
 
 Sometimes you might want to make parent props available to child components. While you could explicitly redefine the props for child component, Laravel ships with the "aware" directive to do exactly that 🚀
 
@@ -5102,7 +5086,7 @@ Sometimes you might want to make parent props available to child components. Whi
 </ul>
 ```
 
-## Tip #283 💡: The "readonly" Blade Directive
+## Tip #282 💡: The "readonly" Blade Directive
 
 Often, we need to conditionally mark an input as readonly. While this can be done manually, Laravel provides a cool blade directive "readonly" to do exactly that 🚀
 
@@ -5115,7 +5099,7 @@ Often, we need to conditionally mark an input as readonly. While this can be don
 />
 ```
 
-## Tip #284 💡: The "includeWhen" Blade Directive
+## Tip #283 💡: The "includeWhen" Blade Directive
 
 Have you ever needed to conditionally include a Blade view? While you could use "if" and "include" together, Laravel ships with the "includeWhen" and "includeUnless" directives to do exactly that 🚀
 
@@ -5132,7 +5116,7 @@ Have you ever needed to conditionally include a Blade view? While you could use 
 @includeUnless(! $isAdmin, 'components.impersonate')
 ```
 
-## Tip #285 💡: Deferred Providers
+## Tip #284 💡: Deferred Providers
 
 If you have a service provider that only registers some bindings, you can mark it as deferred by implementing the "DeferrableProvider" interface. This way, it will load only when one of its bindings is needed 🚀
 
@@ -5159,7 +5143,7 @@ class RiakServiceProvider extends ServiceProvider implements DeferrableProvider
 }
 ```
 
-## Tip #286 💡: The "pipe" Collection Method
+## Tip #285 💡: The "pipe" Collection Method
 
 Did you know that Laravel collections ship with a "pipe" method? It passes the collection to a given callback and returns the result. It can be useful when you want to wrap your collection or perform calculations 🚀
 
@@ -5177,7 +5161,7 @@ $collection->pipe(fn (Collection $collection) => ['numbers' => $collection->toAr
 // ['numbers' => [1, 2, 3]]
 ```
 
-## Tip #287 💡: Render Inline Blade Templates
+## Tip #286 💡: Render Inline Blade Templates
 
 Did you know you can render Blade templates inline? This is great for compiling Blade to HTML, like adding help texts in Nova or Filament or generating emails outside Laravel projects since it can work as a standalone package 🚀
 
@@ -5189,7 +5173,7 @@ use Illuminate\Support\Facades\Blade;
 return Blade::render('Hello, {{ $name }}', ['name' => 'Laravel']); // Hello, Laravel
 ```
 
-## Tip #288 💡: The "toggle" method
+## Tip #287 💡: The "toggle" method
 
 At some point, we all needed to toggle a value, for example, a like feature that switches between states. While you can do it manually, Laravel ships with a "toggle" method to do exactly that 🚀
 
@@ -5210,7 +5194,7 @@ $user->likes()->toggle($tweet->id);
 $user->products()->toggle([1, 2, 3]);
 ```
 
-## Tip #289 💡: The New "doesntContain" String Method
+## Tip #288 💡: The New "doesntContain" String Method
 
 Sometimes, you might need to check if a string does not contain a given value. Previously, you could negate the "contains" helper, but things just got even better with the new "doesntContain" method 🚀
 
@@ -5228,7 +5212,7 @@ if (Str::doesntContain('Larvel forever', 'Laravel')) {
 }
 ```
 
-## Tip #290 💡: Skip Exception Reporting
+## Tip #289 💡: Skip Exception Reporting
 
 There are some exceptions that you may not want to report to your monitoring tool. While you could manually register them in "app.php", you can just mark the exception with the "ShouldntReport" interface 🚀
 
@@ -5246,7 +5230,7 @@ class PodcastProcessingException extends Exception implements ShouldntReport
 }
 ```
 
-## Tip #291 💡: Get the Full Query Log
+## Tip #290 💡: Get the Full Query Log
 
 Ever needed to dump the full query log executed in a method? You can enable the query log at the very beginning and dump it at the end by using "enableQueryLog" and "getRawQueryLog" 🚀
 
@@ -5264,7 +5248,7 @@ DB::getRawQueryLog();
 // time: 0.33
 ```
 
-## Tip #292 💡:  Autocompletion in PestPHP
+## Tip #291 💡:  Autocompletion in PestPHP
 
 When writing Pest tests, you will likely use "$this", which is not good for IDE autocompletion and may require adding a PHPDoc. To avoid this, use the "test()" helper instead, which returns the current Test Case instance 🚀
 
@@ -5285,7 +5269,7 @@ test('the array has the specified key', function () {
 });
 ```
 
-## Tip #293 💡:  Global Middleware for HTTP Client
+## Tip #292 💡:  Global Middleware for HTTP Client
 
 Sometimes you may want to apply global headers to all outgoing requests. For instance, a global user agent can help you identify your app's requests in other services or third-party APIs. Laravel already supports request and response middleware  to do exactly that 🚀
 
@@ -5303,7 +5287,7 @@ Http::globalResponseMiddleware(fn ($response) => $response->withHeader(
 ));
 ```
 
-## Tip #294 💡:  The New "rawColumn" Method
+## Tip #293 💡:  The New "rawColumn" Method
 
 Laravel v11.32 introduces a new "rawColumn" method. Now, instead of having to use a DB statement when the grammar does not support updating or creating the column, you can use the "rawColumn" method 🚀
 
@@ -5334,7 +5318,7 @@ new class extends Migration {
 };
 ```
 
-## Tip #295 💡:  Explain Eloquent Queries
+## Tip #294 💡:  Explain Eloquent Queries
 
 Have you ever needed to run an EXPLAIN on an Eloquent query to check if an index is being used? While you could manually extract the raw query and run EXPLAIN on it, you can just chain the "explain" method to do exactly that 🚀
 
@@ -5364,7 +5348,7 @@ array:1 [
 ]
 ```
 
-## Tip #296 💡:  Force HTTPS for URLs
+## Tip #295 💡:  Force HTTPS for URLs
 
 Since Laravel v11.31, you can enforce HTTPS for all generated URLs without needing the HTTPS schema specified in the request 🚀
 
@@ -5376,7 +5360,7 @@ use Illuminate\Support\Facades\URL;
 URL::forceHttps(app()->isProduction());
 ```
 
-## Tip #297 💡:  The Prohibitable Trait
+## Tip #296 💡:  The Prohibitable Trait
 
 Most Laravel apps often have local-only or environment-dependent commands that shouldn't run elsewhere. To prevent accidents, use the "Prohibitable" trait and call the "prohibit" method 🚀
 

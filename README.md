@@ -5375,3 +5375,24 @@ use Illuminate\Support\Facades\URL;
 
 URL::forceHttps(app()->isProduction());
 ```
+
+## Tip #297 💡:  The Prohibitable Trait
+
+Most Laravel apps often have local-only or environment-dependent commands that shouldn't run elsewhere. To prevent accidents, use the "Prohibitable" trait and call the "prohibit" method 🚀
+
+```php
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Console\Prohibitable;
+
+class CleanLogs extends Command
+{
+    use Prohibitable;
+}
+
+// Now in the boot method of the AppServiceProvider
+CleanLogs::prohibit(app()->isProduction());
+```

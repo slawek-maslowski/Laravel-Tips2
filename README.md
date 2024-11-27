@@ -5380,3 +5380,27 @@ class CleanLogs extends Command
 // Now in the boot method of the AppServiceProvider
 CleanLogs::prohibit(app()->isProduction());
 ```
+
+## Tip #297 💡:  Prohibit DB Destructive Commands
+
+Running migrations or wiping the DB in production can be, well, disastrous. Since Laravel v11, you can prohibit all DB destructive commands by calling "prohibitDestructiveCommands" method 🚀
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        // Prevents 'migrate:fresh', 'migrate:refresh', 'migrate:reset', and 'db:wipe'
+        DB::prohibitDestructiveCommands(
+            $this->app->isProduction()
+        );
+    }
+}
+```

@@ -1029,13 +1029,9 @@ class Install extends Command
 {
     protected $signature = 'package:install';
 
-    public function __construct()
+    public function isHidden(): bool
     {
-        parent::__construct();
-
-        if (file_exists(config_path('package-config.php'))) {
-            $this->setHidden();
-        }
+        return file_exists(config_path('package-config.php'));
     }
 
     public function handle()

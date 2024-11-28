@@ -3013,7 +3013,7 @@ Did you know that Laravel ships with the "logoutCurrentDevice" method, which all
 
 use Illuminate\Support\Facades\Auth;
  
-Auth::logoutCurrentDevuce();
+Auth::logoutCurrentDevice();
 ```
 
 ## Tip #163 💡: Customize the Default Timestamp Columns

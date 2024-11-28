@@ -5404,3 +5404,26 @@ class AppServiceProvider extends ServiceProvider
     }
 }
 ```
+
+## Tip #298 💡: Conditionally Hide Console Commands
+
+Sometimes, you may want to hide console commands, such as legacy commands, from being listed. While you can manually hide them using the ["setHidden()"](#tip-55--hide-console-commands), you can do this with the "isHidden()" method 🚀
+
+```php
+<?php
+ 
+namespace App\Console\Commands;
+ 
+use Illuminate\Console\Command;
+ 
+class LegacyCommand extends Command
+{
+    // ...
+
+    public function isHidden(): bool
+    {
+        // This could check a configuration flag
+        return true;
+    }
+}
+```

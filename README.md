@@ -5427,3 +5427,28 @@ class LegacyCommand extends Command
     }
 }
 ```
+
+Tip #299 💡:  The New "RouteParameter" Attribute
+
+Laravel v11.28 introduced a new attribute `RouteParameter`, which provides an elegant way to access route parameters. While you can use the [`route()`](#tip-3--model-binding-in-form-requests) method on form requests, with the new attribute you also get proper type hints 🚀
+
+```php
+<?php
+
+use App\Models\Post;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Container\Attributes\RouteParameter;
+
+class UpdatePost extends FormRequest
+{
+    public function authorize(#[RouteParameter('post')] Post $post): bool
+    {
+        return $this->user()->can('update', $post);
+    }
+
+    // ...
+}
+
+// Route definition
+Route::put('/post/{post}', [PostsController::class, 'update']);
+```

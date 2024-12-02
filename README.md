@@ -5452,3 +5452,20 @@ class UpdatePost extends FormRequest
 // Route definition
 Route::put('/post/{post}', [PostsController::class, 'update']);
 ```
+
+## Tip #300 💡: On-Demand Storage Disks
+
+Have you ever needed to quickly create a disk, whether for tests or temporary files, but had to define it in the filesystem configuration? Well, Laravel ships with on-demand disks so that you can define disks at runtime instead 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Storage;
+ 
+$disk = Storage::build([
+    'driver' => 'local',
+    'root' => '/path/to/root',
+]);
+ 
+$disk->put('image.jpg', $content);
+```

@@ -5469,3 +5469,18 @@ $disk = Storage::build([
  
 $disk->put('image.jpg', $content);
 ```
+
+## Tip #301 💡: Spell Ordinal Numbers
+
+Starting from Laravel v11.34, you can now spell ordinal numbers using the newly introduced "spellOrdinal" method 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Number;
+ 
+$position = Number::ordinal(3); // 3rd
+
+// Now you can spell it 🔥
+$position = Number::spellOrdinal(3); // third
+```

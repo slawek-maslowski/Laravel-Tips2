@@ -5484,3 +5484,20 @@ $position = Number::ordinal(3); // 3rd
 // Now you can spell it 🔥
 $position = Number::spellOrdinal(3); // third
 ```
+
+## Tip #302 💡: Keeping Jobs Unique Until Processing
+
+Sometimes, you may have jobs where only one job can be queued at a time, but once it starts processing, you can queue more jobs. Laravel ships with the "ShouldBeUniqueUntilProcessing" contract to do exactly this 🚀
+
+```php
+<?php
+ 
+use App\Models\Product;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
+ 
+class UpdateSearchIndex implements ShouldQueue, ShouldBeUniqueUntilProcessing
+{
+    // ...
+}
+```

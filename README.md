@@ -1,6 +1,6 @@
 # Laravel Tips
 
-Daily Laravel/PHP tips I share on my [X](https://x.com/OussamaMater) and [LinkedIn](https://www.linkedin.com/in/oussamamater/).
+Daily Laravel/PHP tips I share on my [X](https://x.com/OussamaMater) and [LinkedIn](https://www.linkedin.com/in/oussamamater/). For more in-depth articles about Laravel, feel free to check out my [blog](https://blog.oussama-mater.tech/).
 
 ## Tip #1 💡: Use rebinding events to refresh dependencies
 

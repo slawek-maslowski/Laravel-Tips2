@@ -5501,3 +5501,24 @@ class UpdateSearchIndex implements ShouldQueue, ShouldBeUniqueUntilProcessing
     // ...
 }
 ```
+
+## Tip #303 💡: The "firstOrNew" Method
+
+Sometimes you may want to check if a model exists, and if not, instantiate it without saving it to the database right away. Laravel ships with the "firstOrNew" to do exactly that 🚀
+
+```php
+<?php
+
+use App\Models\User;
+
+// Find the user by email, or save it to the database if it doesn't exist
+User::firstOrCreate(['email' => 'name@example.com']);
+
+// Find the user by email, or instantiate a new User instance without saving it
+User::firstOrNew(['email' => 'name@example.com']);
+
+// Do something with $user
+
+// Save it to the database
+$user->save();
+```

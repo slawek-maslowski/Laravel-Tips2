@@ -2503,7 +2503,7 @@ Sometimes, when working with collections, you may want to skip all the elements 
 $collection = collect([1, 2, 3, 4]);
 
 $subset = $collection->skipUntil(function (int $item) {
-    return $item > 3;
+    return $item >= 3;
 });
 
 $subset->all(); // [3, 4]

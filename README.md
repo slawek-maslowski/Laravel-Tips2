@@ -5522,3 +5522,31 @@ User::firstOrNew(['email' => 'name@example.com']);
 // Save it to the database
 $user->save();
 ```
+
+## Tip #304 💡: The "keyBy" Method
+
+Have you ever needed to key your eloquent collection by an attribute from its items? While you can hack your way with pluck, the "keyBy" method does exactly that 🚀
+
+```php
+<?php
+
+$collection = collect([
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+]);
+
+// Instead of doing this or any manual transformation
+$keyed = $collection->pluck(null, 'product_id');
+
+// You can simply do this 🔥
+$keyed = $collection->keyBy('product_id');
+
+$keyed->all();
+
+/*
+    [
+        'prod-100' => ['product_id' => 'prod-100', 'name' => 'Desk'],
+        'prod-200' => ['product_id' => 'prod-200', 'name' => 'Chair'],
+    ]
+*/
+```

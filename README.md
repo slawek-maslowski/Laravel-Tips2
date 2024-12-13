@@ -5550,3 +5550,24 @@ $keyed->all();
     ]
 */
 ```
+
+## Tip #305 💡: The "remove" Str Method
+
+Have you ever needed to remove some characters from a text? While you can do it manually with built-in PHP functions, Laravel provides a much more readable wrapper "remove", which you can also chain with other methods 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+
+$string = 'Peter Piper picked a peck of pickled peppers.';
+
+// This works
+str_replace('e', '', $string); // Ptr Pipr pickd a pck of pickld ppprs.
+
+// But this reads much better 🔥 and supports case insensitive as well
+Str::remove('e', $string, caseSensitive: false); // Ptr Pipr pickd a pck of pickld ppprs.
+
+// You can also remove multiple letters at once
+Str::remove(['e', 'i', 't'], $string); // Pr Ppr pckd a pck of pckld ppprs.
+```

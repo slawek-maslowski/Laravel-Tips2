@@ -5571,3 +5571,26 @@ Str::remove('e', $string, caseSensitive: false); // Ptr Pipr pickd a pck of pick
 // You can also remove multiple letters at once
 Str::remove(['e', 'i', 't'], $string); // Pr Ppr pckd a pck of pckld ppprs.
 ```
+
+## Tip #306 💡: The "withWhereHas" Str Method
+
+Have you ever needed to eager load a relationship but also constrain it with relationship existence? While you can do that manually with 2 methods, Laravel ships with the "withWhereHas" method to do exactly that 🚀
+
+```php
+<?php
+
+// Instead of this
+User::query()
+    ->whereHas('posts', function (Builder $query) {
+        $query->where('featured', true);
+    })
+    ->with('posts')
+    ->get();
+
+// You can simply use withWhereHas 🔥
+User::query()
+    ->withWhereHas('posts', function (Builder $query) {
+        $query->where('featured', true);
+    })
+    ->get();
+```

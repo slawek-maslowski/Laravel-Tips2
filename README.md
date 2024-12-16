@@ -5572,7 +5572,7 @@ Str::remove('e', $string, caseSensitive: false); // Ptr Pipr pickd a pck of pick
 Str::remove(['e', 'i', 't'], $string); // Pr Ppr pckd a pck of pckld ppprs.
 ```
 
-## Tip #306 💡: The "withWhereHas" Str Method
+## Tip #306 💡: The "withWhereHas" Method
 
 Have you ever needed to eager load a relationship but also constrain it with relationship existence? While you can do that manually with 2 methods, Laravel ships with the "withWhereHas" method to do exactly that 🚀
 

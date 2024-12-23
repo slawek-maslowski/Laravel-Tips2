@@ -4116,7 +4116,7 @@ Did you know that not only can you parameterize your translation strings, but yo
 // in your en/messages.json
 return [
     'welcome' => 'Welcome, :NAME',
-    'goodbye' => 'Goodbye, :NAME',
+    'goodbye' => 'Goodbye, :Name',
 ];
 
 // This will auto-capitalize it for you
@@ -4147,8 +4147,7 @@ protected function hash(): Attribute
 {
     return Attribute::make(
         get: fn (string $value) => bcrypt(gzuncompress($value)),
-        shouldCache: true
-    );
+    )->shouldCache();
 }
 ```
 

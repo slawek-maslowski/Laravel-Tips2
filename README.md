@@ -5593,3 +5593,19 @@ User::query()
     })
     ->get();
 ```
+
+## Tip #307 💡:  Finding Duplicates
+
+Sometimes you may need to find duplicate values, such as when cleaning up data. While you could do this manually, Laravel already ships with the "duplicates" method to do exactly that 🚀
+
+```php
+<?php
+
+$collection = collect(['a', 'b', 'a', 'c', 'b', 100, '100']);
+
+// Loose comparison
+$collection->duplicates(); // ['a', 'b', '100']
+
+// Strict comparison
+$collection->duplicatesStrict(); // ['a', 'b']
+```

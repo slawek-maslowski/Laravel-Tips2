@@ -5609,3 +5609,20 @@ $collection->duplicates(); // ['a', 'b', '100']
 // Strict comparison
 $collection->duplicatesStrict(); // ['a', 'b']
 ```
+
+## Tip #308 💡: Update Pivot Columns
+
+Have you ever needed to update a pivot column? While you can manually handle this with the query builder, Laravel ships with the "updateExistingPivot" method to do exactly that 🚀
+
+```php
+<?php
+
+$user = User::first();
+$roleId = Role::value('id');
+
+$user->roles()->updateExistingPivot($roleId, [
+    'active' => false,
+]);
+
+// UPDATE `role_user` SET `active` = 0 WHERE `role_user`.`user_id` = 1 AND `role_id` IN (1)
+```

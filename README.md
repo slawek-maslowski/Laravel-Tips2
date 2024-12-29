@@ -5626,3 +5626,31 @@ $user->roles()->updateExistingPivot($roleId, [
 
 // UPDATE `role_user` SET `active` = 0 WHERE `role_user`.`user_id` = 1 AND `role_id` IN (1)
 ```
+
+## Tip #309 💡:Useful Loop Properties
+
+When working with loops in Blade, you may need to check for odd iterations or calculate the remaining ones to adjust your UI. While you can do this manually, the "loop" variable has properties for almost everything you need 🚀
+
+```php
+@foreach ($users as $user)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+ 
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+ 
+    @if ($loop->even)
+        This is an even iteration.
+    @endif
+
+    @if ($loop->odd)
+        This is an odd iteration.
+    @endif
+
+    @if ($loop->remaining > 1)
+        The remaining attribute holds the number of iterations left in the loop.
+    @endif
+@endforeach
+```

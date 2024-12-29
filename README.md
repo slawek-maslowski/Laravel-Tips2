@@ -5247,7 +5247,7 @@ DB::getRawQueryLog();
 // time: 0.33
 ```
 
-## Tip #291 💡:  Autocompletion in PestPHP
+## Tip #291 💡: Autocompletion in PestPHP
 
 When writing Pest tests, you will likely use "$this", which is not good for IDE autocompletion and may require adding a PHPDoc. To avoid this, use the "test()" helper instead, which returns the current Test Case instance 🚀
 
@@ -5268,7 +5268,7 @@ test('the array has the specified key', function () {
 });
 ```
 
-## Tip #292 💡:  Global Middleware for HTTP Client
+## Tip #292 💡: Global Middleware for HTTP Client
 
 Sometimes you may want to apply global headers to all outgoing requests. For instance, a global user agent can help you identify your app's requests in other services or third-party APIs. Laravel already supports request and response middleware  to do exactly that 🚀
 
@@ -5286,7 +5286,7 @@ Http::globalResponseMiddleware(fn ($response) => $response->withHeader(
 ));
 ```
 
-## Tip #293 💡:  The New "rawColumn" Method
+## Tip #293 💡: The New "rawColumn" Method
 
 Laravel v11.32 introduces a new "rawColumn" method. Now, instead of having to use a DB statement when the grammar does not support updating or creating the column, you can use the "rawColumn" method 🚀
 
@@ -5317,7 +5317,7 @@ new class extends Migration {
 };
 ```
 
-## Tip #294 💡:  Explain Eloquent Queries
+## Tip #294 💡: Explain Eloquent Queries
 
 Have you ever needed to run an EXPLAIN on an Eloquent query to check if an index is being used? While you could manually extract the raw query and run EXPLAIN on it, you can just chain the "explain" method to do exactly that 🚀
 
@@ -5347,7 +5347,7 @@ array:1 [
 ]
 ```
 
-## Tip #295 💡:  Force HTTPS for URLs
+## Tip #295 💡: Force HTTPS for URLs
 
 Since Laravel v11.31, you can enforce HTTPS for all generated URLs without needing the HTTPS schema specified in the request 🚀
 
@@ -5359,7 +5359,7 @@ use Illuminate\Support\Facades\URL;
 URL::forceHttps(app()->isProduction());
 ```
 
-## Tip #296 💡:  The Prohibitable Trait
+## Tip #296 💡: The Prohibitable Trait
 
 Most Laravel apps often have local-only or environment-dependent commands that shouldn't run elsewhere. To prevent accidents, use the "Prohibitable" trait and call the "prohibit" method 🚀
 
@@ -5380,7 +5380,7 @@ class CleanLogs extends Command
 CleanLogs::prohibit(app()->isProduction());
 ```
 
-## Tip #297 💡:  Prohibit DB Destructive Commands
+## Tip #297 💡: Prohibit DB Destructive Commands
 
 Running migrations or wiping the DB in production can be, well, disastrous. Since Laravel v11, you can prohibit all DB destructive commands by calling "prohibitDestructiveCommands" method 🚀
 
@@ -5427,7 +5427,7 @@ class LegacyCommand extends Command
 }
 ```
 
-## Tip #299 💡:  The New "RouteParameter" Attribute
+## Tip #299 💡: The New "RouteParameter" Attribute
 
 Laravel v11.28 introduced a new attribute `RouteParameter`, which provides an elegant way to access route parameters. While you can use the [`route()`](#tip-3--model-binding-in-form-requests) method on form requests, with the new attribute you also get proper type hints 🚀
 
@@ -5594,7 +5594,7 @@ User::query()
     ->get();
 ```
 
-## Tip #307 💡:  Finding Duplicates
+## Tip #307 💡: Finding Duplicates
 
 Sometimes you may need to find duplicate values, such as when cleaning up data. While you could do this manually, Laravel already ships with the "duplicates" method to do exactly that 🚀
 
@@ -5627,7 +5627,7 @@ $user->roles()->updateExistingPivot($roleId, [
 // UPDATE `role_user` SET `active` = 0 WHERE `role_user`.`user_id` = 1 AND `role_id` IN (1)
 ```
 
-## Tip #309 💡:Useful Loop Properties
+## Tip #309 💡: Useful Loop Properties
 
 When working with loops in Blade, you may need to check for odd iterations or calculate the remaining ones to adjust your UI. While you can do this manually, the "loop" variable has properties for almost everything you need 🚀
 

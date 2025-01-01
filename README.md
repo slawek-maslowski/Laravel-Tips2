@@ -5654,3 +5654,27 @@ When working with loops in Blade, you may need to check for odd iterations or ca
     @endif
 @endforeach
 ```
+
+## Tip #310 💡: The "distinct" Validation Rule
+
+Have you ever needed to check if an array contains duplicate values? While you can do this manually, it can get slightly messy. Instead, you can use the "distinct" validation rule to do exactly this 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Validator;
+
+$posts = [
+    ['title' => 'First Post'],
+    ['title' => 'Second Post'],
+    ['title' => 'First Post'], // Duplicate title here
+    ['title' => 'Third Post'],
+];
+
+// Instead of manually checking if the data contains duplicates
+$filteredCount = collect($posts)->pluck('title')->unique();
+$filteredCount->count() !== collect($posts)->count(); // true
+
+// You can simply use built in validation rules 🔥
+Validator::make($posts, ['*.title' => 'distinct:strict'])->fails(); // true
+```

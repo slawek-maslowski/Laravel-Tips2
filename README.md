@@ -5678,3 +5678,19 @@ $filteredCount->count() !== collect($posts)->count(); // true
 // You can simply use built in validation rules 🔥
 Validator::make($posts, ['*.title' => 'distinct:strict'])->fails(); // true
 ```
+
+## Tip #311 💡: Check If a String Is a URL
+
+Have you ever needed to check if a given string is a valid URL? While you could do this manually, Laravel ships with the "isUrl" method to do exactly that. You can even take it a step further and check for various protocols 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+ 
+Str::isUrl('http://valid-url.com', ['https', 'http']); // true
+ 
+Str::isUrl('ftp://yourserverdomain.com'); // true
+
+Str::isUrl('non-valid-url'); // false
+```

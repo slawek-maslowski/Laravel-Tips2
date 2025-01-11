@@ -5694,3 +5694,18 @@ Str::isUrl('ftp://yourserverdomain.com'); // true
 
 Str::isUrl('non-valid-url'); // false
 ```
+
+## Tip #312 💡: Run Scheduled Commands on a Single Server
+
+Running your app on multiple servers? By default, scheduled commands will execute on all servers, which is unnecessary and can cause issues. You can prevent this by using the "onOneServer" 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::command('report:generate')
+    ->fridays()
+    ->at('17:00')
+    ->onOneServer(); // the command will run on a single server
+```

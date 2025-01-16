@@ -5709,3 +5709,22 @@ Schedule::command('report:generate')
     ->at('17:00')
     ->onOneServer(); // the command will run on a single server
 ```
+
+## Tip #313 💡: Confirm User Password
+
+Certain actions like deleting an account might require users to confirm their password. While you could implement this logic manually, Laravel ships with a built in validation rule, current_password, to do exactly that 🚀
+
+```php
+<?php
+
+public function destroy(Request $request): RedirectResponse
+{
+    $request->validate([
+        'password' => ['required', 'current_password:web'],
+    ]);
+ 
+    // ...
+ 
+    return to_route('home');
+}
+```

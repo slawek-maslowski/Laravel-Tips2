@@ -2701,9 +2701,9 @@ $user = User::create([
 ]);
 ```
 
-## Tip #144 💡: The "createOr" Laravel
+## Tip #144 💡: The "firstOr" Laravel
 
-Sometimes, you may want to execute some actions when no record is found, beyond just creating a new instance. The "createOr" method allows you to do exactly that 🚀
+Sometimes, you may want to execute some actions when no record is found, beyond just creating a new instance. The "firstOr" method allows you to do exactly that 🚀
 
 ```php
 <?php

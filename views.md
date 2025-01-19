@@ -1,0 +1,164 @@
+# Views & Blade Tips ([cd ..](./README.md))
+
+- [Type Hinting for Blade](#laravel-tip--type-hinting-for-blade-️)
+- [The "checked" Blade Directive](#laravel-tip--the-checked-blade-directive-️)
+- [Access the Parent Loop Variable](#laravel-tip--access-the-parent-loop-variable-️)
+- [Short Attribute Syntax](#laravel-tip--short-attribute-syntax-️)
+- [Blade To HTML](#laravel-tip--blade-to-html-️)
+- [The "aware" Blade Directive](#laravel-tip--the-aware-blade-directive-️)
+- [The "readonly" Blade Directive](#laravel-tip--the-readonly-blade-directive-️)
+- [The "includeWhen" Blade Directive](#laravel-tip--the-includewhen-blade-directive-️)
+- [Render Inline Blade Templates](#laravel-tip--render-inline-blade-templates-️)
+- [Useful Loop Properties](#laravel-tip--useful-loop-properties-️)
+
+## Laravel Tip 💡: Type Hinting for Blade ([⬆️](#views--blade-tips-cd-))
+
+We use Blade a lot, and if I have one thing to complain about, it's type hints. However, we can solve this issue by defining a @php block for all the variables used 🚀
+
+```php
+@php
+    /* @var App\Models\Flight $flight */
+@endphp
+
+<div>
+    // Your IDE will provide type hints for the property
+    {{ $flight->name }}
+</div>
+```
+
+## Laravel Tip 💡: The "checked" Blade Directive ([⬆️](#views--blade-tips-cd-))
+
+Often, we need to conditionally mark an input as checked. While this can be done manually, Laravel provides a cool blade directive "checked" to do exactly that 🚀
+
+```php
+<input type="checkbox" name="active" value="active"
+    {{ old('active', $user->active) ? 'checked' : '' }}
+    @checked(old('active', $user->active)) />
+```
+
+## Laravel Tip 💡: Access the Parent Loop Variable ([⬆️](#views--blade-tips-cd-))
+
+Sometimes, when dealing with nested loops, you may want to keep track of the parent's iteration. Blade makes it incredibly easy, as you have access to the parent loop variable 🚀
+
+```php
+@foreach ($users as $user)
+    @foreach ($user->posts as $post)
+        @if ($loop->parent->first)
+            // This is the first iteration of the parent loop.
+        @endif
+    @endforeach
+@endforeach
+```
+
+## Laravel Tip 💡: Short Attribute Syntax ([⬆️](#views--blade-tips-cd-))
+
+Did you know that Blade allows for short attribute syntax when passing to components? 🚀
+
+```php
+// Instead of this 😫
+<x-profile :user-id="$userId"></x-profile>
+
+// You can do this 😎
+<x-profile :$userId></x-profile>
+```
+
+## Laravel Tip 💡: Blade To HTML ([⬆️](#views--blade-tips-cd-))
+
+Did you know you can use Blade to render views as strings wherever you want? This is helpful as you can use Blade to build dynamic strings or even shell scripts, similar to how Envoy does 🚀
+
+```php
+<?php
+
+// This renders the blade file welcome.blade.php into an HTML string
+$rendered = view('welcome', ['foo' => 'bar'])->render();
+```
+
+## Laravel Tip 💡: The "aware" Blade Directive ([⬆️](#views--blade-tips-cd-))
+
+Sometimes you might want to make parent props available to child components. While you could explicitly redefine the props for child component, Laravel ships with the "aware" directive to do exactly that 🚀
+
+```html
+<x-menu color="purple">
+    <x-menu.item>...</x-menu.item>
+    <x-menu.item>...</x-menu.item>
+</x-menu>
+
+<!-- /resources/views/components/menu/index.blade.php -->
+
+@props(['color' => 'gray']) <!-- Color property is not accessible to child components -->
+@aware(['color' => 'gray']) <!-- Color property is accessible to child components -->
+
+<ul {{ $attributes->merge(['class' => 'bg-'.$color.'-200']) }}>
+    {{ $slot }}
+</ul>
+```
+
+## Laravel Tip 💡: The "readonly" Blade Directive ([⬆️](#views--blade-tips-cd-))
+
+Often, we need to conditionally mark an input as readonly. While this can be done manually, Laravel provides a cool blade directive "readonly" to do exactly that 🚀
+
+```html
+<input
+    type="email"
+    name="email"
+    {{ $user->isNotAdmin() ? 'readonly' : '' }}
+    @readonly($user->isNotAdmin())
+/>
+```
+
+## Laravel Tip 💡: The "includeWhen" Blade Directive ([⬆️](#views--blade-tips-cd-))
+
+Have you ever needed to conditionally include a Blade view? While you could use "if" and "include" together, Laravel ships with the "includeWhen" and "includeUnless" directives to do exactly that 🚀
+
+```php
+// Instead of this 🥱
+@if ($isAdmin)
+    @include('components.impersonate')
+@endif
+
+// You can do this 🔥
+@includeWhen($isAdmin, 'components.impersonate')
+
+// even this
+@includeUnless(! $isAdmin, 'components.impersonate')
+```
+
+## Laravel Tip 💡: Render Inline Blade Templates ([⬆️](#views--blade-tips-cd-))
+
+Did you know you can render Blade templates inline? This is great for compiling Blade to HTML, like adding help texts in Nova or Filament or generating emails outside Laravel projects since it can work as a standalone package 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Blade;
+
+return Blade::render('Hello, {{ $name }}', ['name' => 'Laravel']); // Hello, Laravel
+```
+
+## Laravel Tip 💡: Useful Loop Properties ([⬆️](#views--blade-tips-cd-))
+
+When working with loops in Blade, you may need to check for odd iterations or calculate the remaining ones to adjust your UI. While you can do this manually, the "loop" variable has properties for almost everything you need 🚀
+
+```php
+@foreach ($users as $user)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+ 
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+ 
+    @if ($loop->even)
+        This is an even iteration.
+    @endif
+
+    @if ($loop->odd)
+        This is an odd iteration.
+    @endif
+
+    @if ($loop->remaining > 1)
+        The remaining attribute holds the number of iterations left in the loop.
+    @endif
+@endforeach
+```

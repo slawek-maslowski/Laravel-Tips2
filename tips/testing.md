@@ -1,4 +1,4 @@
-# Testing Tips ([cd ..](./README.md))
+# Testing Tips ([cd ..](../README.md))
 
 - [Prevent Stray Requests](#laravel-tip--prevent-stray-requests-️)
 - [Faker Formatters](#laravel-tip--faker-formatters-️)

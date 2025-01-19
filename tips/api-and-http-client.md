@@ -1,4 +1,4 @@
-# API & The HTTP Client Tips ([cd ..](./README.md))
+# API & The HTTP Client Tips ([cd ..](../README.md))
 
 - [The "withToken()" method](#laravel-tip--the-withtoken-method-️)
 - [Extend the "PersonalAccessToken" model](#laravel-tip--extend-the-personalaccesstoken-model-️)

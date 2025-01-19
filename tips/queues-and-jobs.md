@@ -1,4 +1,4 @@
-# Queues & Jobs Tips ([cd ..](./README.md))
+# Queues & Jobs Tips ([cd ..](../README.md))
 
 - [Dispatch After Response](#laravel-tip--dispatch-after-response-️)
 - [Delete a Job When Models Are Missing](#laravel-tip--delete-a-job-when-models-are-missing-️)

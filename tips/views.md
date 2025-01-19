@@ -1,4 +1,4 @@
-# Views & Blade Tips ([cd ..](./README.md))
+# Views & Blade Tips ([cd ..](../README.md))
 
 - [Type Hinting for Blade](#laravel-tip--type-hinting-for-blade-️)
 - [The "checked" Blade Directive](#laravel-tip--the-checked-blade-directive-️)

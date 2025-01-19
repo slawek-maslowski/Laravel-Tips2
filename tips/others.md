@@ -1,4 +1,4 @@
-# Other Useful Tips ([cd ..](./README.md))
+# Other Useful Tips ([cd ..](../README.md))
 
 - [isset()](#laravel-tip--isset-️)
 - [Preview Mailables](#laravel-tip--preview-mailables-️)

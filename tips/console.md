@@ -1,4 +1,4 @@
-# Artisan & Console Commands Tips ([cd ..](./README.md))
+# Artisan & Console Commands Tips ([cd ..](../README.md))
 
 - [Much Cooler Command Output](#laravel-tip--much-cooler-command-output-️)
 - [Laravel 💡: The Scheduler's "skip" Method](#laravel--the-schedulers-skip-method)

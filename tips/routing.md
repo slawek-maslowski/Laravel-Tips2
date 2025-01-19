@@ -1,4 +1,4 @@
-# Routing & Requests Tips ([cd ..](./README.md))
+# Routing & Requests Tips ([cd ..](../README.md))
 
 - [Model Binding in Form Requests](#laravel-tip--model-binding-in-form-requests-️)
 - [Route Absolute and Relative Path](#laravel-tip--route-absolute-and-relative-path-️)

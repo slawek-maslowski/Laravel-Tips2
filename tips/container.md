@@ -1,4 +1,4 @@
-# Container Tips ([cd ..](./README.md))
+# Container Tips ([cd ..](../README.md))
 
 - [Use rebinding events to refresh dependencies](#laravel-tip--use-rebinding-events-to-refresh-dependencies-️)
 - [Bind Typed Variadics](#laravel-tip--bind-typed-variadics-️)

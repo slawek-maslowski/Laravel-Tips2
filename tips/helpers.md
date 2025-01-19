@@ -1,4 +1,4 @@
-# Helpers Tips ([cd ..](./README.md))
+# Helpers Tips ([cd ..](../README.md))
 
 - [The "squish" method](#laravel-tip--the-squish-method-️)
 - [The "json" method](#laravel-tip--the-json-method-️)

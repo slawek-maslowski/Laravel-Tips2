@@ -1,4 +1,4 @@
-# Eloquent & Database Tips ([cd ..](./README.md))
+# Eloquent & Database Tips ([cd ..](../README.md))
 
 - [Get Original Attributes](#laravel-tip--get-original-attributes-️)
 - [Specify Custom Factories Path](#laravel-tip--specify-custom-factories-path-️)

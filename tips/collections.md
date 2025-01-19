@@ -1,4 +1,4 @@
-# Laravel Collections Tips ([cd ..](./README.md))
+# Laravel Collections Tips ([cd ..](../README.md))
 
 - [The "containsOneItem" Method](#laravel-tip--the-containsoneitem-method-️)
 - [The "dot" and "undot" Methods](#laravel-tip--the-dot-and-undot-methods-️)

@@ -1,4 +1,4 @@
-# Error Handling Tips ([cd ..](./README.md))
+# Error Handling Tips ([cd ..](../README.md))
 
 - [Mapping Exceptions via Handler](#laravel-tip--mapping-exceptions-via-handler-️)
 - [Mapping Exception via Custom Exception Classes](#laravel-tip--mapping-exception-via-custom-exception-classes-️)

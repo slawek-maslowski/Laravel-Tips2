@@ -1,4 +1,4 @@
-# Authentication & Authorization Tips ([cd ..](./README.md))
+# Authentication & Authorization Tips ([cd ..](../README.md))
 
 - [Hook into Authentication Events](#laravel-tip--hook-into-authentication-events-️)
 - [Deny As Not Found](#laravel-tip--deny-as-not-found-️)

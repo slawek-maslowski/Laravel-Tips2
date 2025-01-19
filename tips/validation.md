@@ -1,4 +1,4 @@
-# Validation Tips ([cd ..](./README.md))
+# Validation Tips ([cd ..](../README.md))
 
 - [Inline Validation](#laravel-tip--inline-validation-️)
 - [Validate Nested Arrays Easily](#laravel-tip--validate-nested-arrays-easily-️)

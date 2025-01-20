@@ -1793,22 +1793,18 @@ $user->save();
 Have you ever needed to eager load a relationship but also constrain it with relationship existence? While you can do that manually with 2 methods, Laravel ships with the "withWhereHas" method to do exactly that 🚀
 
 ```php
-<?php
-
 // Instead of this
 User::query()
-    ->whereHas('posts', function (Builder $query) {
-        $query->where('featured', true);
-    })
-    ->with('posts')
+    ->whereHas('posts', fn (Builder $query) => $query->where('featured', true))
+    ->with(['posts' => fn (Builder $query) => $query->where('featured', true)])
     ->get();
 
 // You can simply use withWhereHas 🔥
 User::query()
-    ->withWhereHas('posts', function (Builder $query) {
-        $query->where('featured', true);
-    })
+    ->withWhereHas('posts', fn (Builder $query) => $query->where('featured', true))
     ->get();
+
+// This will retrieve all users that meet the condition, along with only their featured posts.
 ```
 
 ## Laravel Tip 💡: Update Pivot Columns ([⬆️](#eloquent--database-tips-cd-))

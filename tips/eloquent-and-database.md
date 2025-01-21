@@ -1165,6 +1165,21 @@ use Illuminate\Database\Eloquent\Model;
 Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
 ```
 
+## Laravel Tip 💡: Prevent Accessing Missing Attributes ([⬆️](#eloquent--database-tips-cd-))
+
+Also, you might configure Laravel to throw an exception when attempting to access a missing attribute to catch missed or forgotten attributes before getting to prod 🚀
+
+```php
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+
+Model::preventAccessingMissingAttributes(! $this->app->isProduction());
+
+$user = User::select('name')->first();
+$user->email // throws a `MissingAttributeException` exception
+```
+
 ## Laravel Tip 💡: Create New Records or Update Existing Ones ([⬆️](#eloquent--database-tips-cd-))
 
 We've all been in a situation where we want to check if a record exists so we can update it, or create it if it does not. Laravel ships with the `updateOrCreate` method to do exactly that 🚀

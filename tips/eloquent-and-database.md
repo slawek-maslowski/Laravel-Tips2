@@ -90,6 +90,7 @@
 - [The "firstOrNew" Method](#laravel-tip--the-firstornew-method-️)
 - [The "withWhereHas" Method](#laravel-tip--the-withwherehas-method-️)
 - [Update Pivot Columns](#laravel-tip--update-pivot-columns-️)
+- [Prevent Accessing Missing Attributes](#laravel-tip--prevent-accessing-missing-attributes-️)
 
 ## Laravel Tip 💡: Get Original Attributes ([⬆️](#eloquent--database-tips-cd-))
 
@@ -1822,4 +1823,19 @@ $user->roles()->updateExistingPivot($roleId, [
 ]);
 
 // UPDATE `role_user` SET `active` = 0 WHERE `role_user`.`user_id` = 1 AND `role_id` IN (1)
+```
+
+## Laravel Tip 💡: Prevent Accessing Missing Attributes ([⬆️](#eloquent--database-tips-cd-))
+
+Did you know you can configure Laravel to throw an exception when attempting to access a missing attribute? This is useful during development to catch typos or changes in the table structure 🚀
+
+```php
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+
+Model::preventAccessingMissingAttributes(! app()->isProduction());
+
+$user = User::select('name')->first();
+$user->email // throws a `MissingAttributeException` exception
 ```

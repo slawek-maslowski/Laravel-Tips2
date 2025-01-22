@@ -90,6 +90,7 @@
 - [The "firstOrNew" Method](#laravel-tip--the-firstornew-method-️)
 - [The "withWhereHas" Method](#laravel-tip--the-withwherehas-method-️)
 - [Update Pivot Columns](#laravel-tip--update-pivot-columns-️)
+- [Prevent Accessing Missing Attributes](#laravel-tip--prevent-accessing-missing-attributes-️)
 
 ## Laravel Tip 💡: Get Original Attributes ([⬆️](#eloquent--database-tips-cd-))
 
@@ -1165,21 +1166,6 @@ use Illuminate\Database\Eloquent\Model;
 Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
 ```
 
-## Laravel Tip 💡: Prevent Accessing Missing Attributes ([⬆️](#eloquent--database-tips-cd-))
-
-Also, you might configure Laravel to throw an exception when attempting to access a missing attribute to catch missed or forgotten attributes before getting to prod 🚀
-
-```php
-<?php
-
-use Illuminate\Database\Eloquent\Model;
-
-Model::preventAccessingMissingAttributes(! $this->app->isProduction());
-
-$user = User::select('name')->first();
-$user->email // throws a `MissingAttributeException` exception
-```
-
 ## Laravel Tip 💡: Create New Records or Update Existing Ones ([⬆️](#eloquent--database-tips-cd-))
 
 We've all been in a situation where we want to check if a record exists so we can update it, or create it if it does not. Laravel ships with the `updateOrCreate` method to do exactly that 🚀
@@ -1837,4 +1823,19 @@ $user->roles()->updateExistingPivot($roleId, [
 ]);
 
 // UPDATE `role_user` SET `active` = 0 WHERE `role_user`.`user_id` = 1 AND `role_id` IN (1)
+```
+
+## Laravel Tip 💡: Prevent Accessing Missing Attributes ([⬆️](#eloquent--database-tips-cd-))
+
+Did you know you can configure Laravel to throw an exception when attempting to access a missing attribute? This is useful during development to catch typos or changes in the table structure 🚀
+
+```php
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+
+Model::preventAccessingMissingAttributes(! app()->isProduction());
+
+$user = User::select('name')->first();
+$user->email // throws a `MissingAttributeException` exception
 ```

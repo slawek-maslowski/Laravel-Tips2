@@ -8,6 +8,7 @@
 - [Skip Jobs When Batch is Cancelled](#laravel-tip--skip-jobs-when-batch-is-cancelled-️)
 - [Skip Jobs](#laravel-tip--skip-jobs-️)
 - [Keeping Jobs Unique Until Processing](#laravel-tip--keeping-jobs-unique-until-processing-️)
+- [Rate Limit Jobs](#laravel-tip--rate-limit-jobs-️)
 
 ## Laravel Tip 💡: Dispatch After Response ([⬆️](#queues--jobs-tips-cd-))
 
@@ -155,5 +156,31 @@ use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
 class UpdateSearchIndex implements ShouldQueue, ShouldBeUniqueUntilProcessing
 {
     // ...
+}
+```
+
+## Laravel Tip 💡: Rate Limit Jobs ([⬆️](#queues--jobs-tips-cd-))
+
+Have you ever needed to rate-limit a job? Whether to avoid overwhelming an API or to limit free plan users from running too many jobs, Laravel allows you to define rate limiters and use them out of the box 🚀
+
+```php
+<?php
+
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Queue\Middleware\RateLimited;
+
+// In one of your service providers
+RateLimiter::for('reports', function (object $job) {
+    return $job->user->vipCustomer()
+        ? Limit::none()
+        : Limit::perHour(5)->by($job->user->id);
+});
+
+
+// In your job class
+public function middleware(): array
+{
+    return [new RateLimited('backups')];
 }
 ```

@@ -181,6 +181,6 @@ RateLimiter::for('reports', function (object $job) {
 // In your job class
 public function middleware(): array
 {
-    return [new RateLimited('backups')];
+    return [new RateLimited('reports')];
 }
 ```

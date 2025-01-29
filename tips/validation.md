@@ -17,6 +17,7 @@
 - [The "sometimes" Validation Rule](#laravel-tip--the-sometimes-validation-rule-️)
 - [The "distinct" Validation Rule](#laravel-tip--the-distinct-validation-rule-️)
 - [Confirm User Password](#laravel-tip--confirm-user-password-️)
+- [Conditional Validation](#laravel-tip--conditional-validation-️)
 
 ## Laravel Tip 💡: Inline Validation ([⬆️](#validation-tips-cd-))
 
@@ -319,4 +320,26 @@ public function destroy(Request $request): RedirectResponse
  
     return to_route('home');
 }
+```
+
+## Laravel Tip 💡: Conditional Validation ([⬆️](#validation-tips-cd-))
+
+Have you ever needed to apply a validation rule only in specific cases? For example, rejecting discount coupons for certain plans. While you could implement this manually, you can make use of the "sometimes" method to do exactly that 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Fluent;
+use Illuminate\Support\Facades\Validator;
+ 
+$validator = Validator::make($request->all(), [
+    'email' => 'required|email',
+    'games' => 'required|numeric',
+]);
+
+// The "reason" field will be validated with the "required" and "max:500" rules if  
+// there are 100 or more games 🔥
+$validator->sometimes('reason', 'required|max:500', function (Fluent $input) {
+    return $input->games >= 100;
+});
 ```

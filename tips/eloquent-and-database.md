@@ -91,6 +91,7 @@
 - [The "withWhereHas" Method](#laravel-tip--the-withwherehas-method-️)
 - [Update Pivot Columns](#laravel-tip--update-pivot-columns-️)
 - [Prevent Accessing Missing Attributes](#laravel-tip--prevent-accessing-missing-attributes-️)
+- [The New "incrementOrCreate" Method](#laravel-tip--the-new-incrementorcreate-method-️)
 
 ## Laravel Tip 💡: Get Original Attributes ([⬆️](#eloquent--database-tips-cd-))
 
@@ -1838,4 +1839,20 @@ Model::preventAccessingMissingAttributes(! app()->isProduction());
 
 $user = User::select('name')->first();
 $user->email // throws a `MissingAttributeException` exception
+```
+
+## Laravel Tip 💡: The New "incrementOrCreate" Method ([⬆️](#eloquent--database-tips-cd-))
+
+As of Laravel v11.39.1, a new "incrementOrCreate" method has been introduced. It allows you to create a record if it does not exist or increment the specified column otherwise 🚀
+
+```php
+<?php
+
+PromoCodeUsage::incrementOrCreate(
+    attributes: ['code' => 'oussama-25-off'], // Thats a valid code for JetBrains products 🔥
+    column: 'usage_count', // Column to increment
+    default: 1, // Default value if the record doesn't exist
+    step: 1, // Increment step
+    extra: ['last_used_at' => now()] // Additional data to update
+);
 ```

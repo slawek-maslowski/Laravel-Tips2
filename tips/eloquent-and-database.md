@@ -92,6 +92,7 @@
 - [Update Pivot Columns](#laravel-tip--update-pivot-columns-️)
 - [Prevent Accessing Missing Attributes](#laravel-tip--prevent-accessing-missing-attributes-️)
 - [The New "incrementOrCreate" Method](#laravel-tip--the-new-incrementorcreate-method-️)
+- [Keep an Eye on Open Connections](#laravel-tip--keep-an-eye-on-open-connections-️)
 
 ## Laravel Tip 💡: Get Original Attributes ([⬆️](#eloquent--database-tips-cd-))
 
@@ -1855,4 +1856,27 @@ PromoCodeUsage::incrementOrCreate(
     step: 1, // Increment step
     extra: ['last_used_at' => now()] // Additional data to update
 );
+```
+
+## Laravel Tip 💡: Keep an Eye on Open Connections ([⬆️](#eloquent--database-tips-cd-))
+
+Did you know that Laravel 9.24 and upwards ships with the db:monitor command? This command allows you to keep an eye on how many open connections you have and react if you exceed a threshold 🚀
+
+```php
+<?php
+
+use Illuminate\Database\Events\DatabaseBusy;
+use Illuminate\Support\Facades\Event;
+
+public function boot(): void
+{
+    Event::listen(function (DatabaseBusy $event) {
+        // Send a notification
+    });
+}
+
+// Schedule a cron job to run the following command every minute.
+// If the number of open connections exceeds 100, the DatabaseBusy event will be triggered,
+// allowing you to send a notification to the team.
+php artisan db:monitor --databases=mysql --max=100
 ```

@@ -21,6 +21,7 @@
 - [The "hasHeader" Method](#laravel-tip--the-hasheader-method-️)
 - [Force HTTPS for URLs](#laravel-tip--force-https-for-urls-️)
 - [The New "RouteParameter" Attribute](#laravel-tip--the-new-routeparameter-attribute-️)
+- [Disable Scope Bindings](#laravel-tip--disable-scope-bindings-️)
 
 ## Laravel Tip 💡: Model Binding in Form Requests ([⬆️](#routing--requests-tips-cd-))
 
@@ -391,4 +392,17 @@ class UpdatePost extends FormRequest
 
 // Route definition
 Route::put('/post/{post}', [PostsController::class, 'update']);
+```
+
+## Laravel Tip 💡: Disable Scope Bindings ([⬆️](#routing--requests-tips-cd-))
+
+By default, Laravel assumes that nested route models are related, meaning it will automatically enforce parent-child relationships. However, if the models are unrelated, this can cause issues. Luckly, you can disable scope bindings by chaining the "withoutScopeBindings" method 🚀
+
+```php
+<?php
+
+// The seller and category are now resolved separately
+Route::get('stores/{seller}/{category:slug}', ShowStoreComponent::class)
+    ->name('stores.show')
+    ->withoutScopeBindings();
 ```

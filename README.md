@@ -10,7 +10,7 @@ Currently, there are over 300 tips categorized as follows:
 - [Artisan & Console Command Tips](./tips/console.md) (23 tips)
 - [Routing & Request Tips](./tips/routing.md) (22 tips)
 - [Laravel Collections Tips](./tips/collections.md) (17 tips)
-- [Validation Tips](./tips/validation.md) (18 tips)
+- [Validation Tips](./tips/validation.md) (19 tips)
 - [API & HTTP Client Tips](./tips/api-and-http-client.md) (11 tips)
 - [Random Cool Tips](./tips/others.md) (13 tips)
 - [View Tips](./tips/views.md) (10 tips)

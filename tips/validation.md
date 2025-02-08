@@ -18,6 +18,7 @@
 - [The "distinct" Validation Rule](#laravel-tip--the-distinct-validation-rule-️)
 - [Confirm User Password](#laravel-tip--confirm-user-password-️)
 - [Conditional Validation](#laravel-tip--conditional-validation-️)
+- [Customize the Default Password Rules](#laravel-tip--customize-the-default-password-rules-️)
 
 ## Laravel Tip 💡: Inline Validation ([⬆️](#validation-tips-cd-))
 
@@ -342,4 +343,31 @@ $validator = Validator::make($request->all(), [
 $validator->sometimes('reason', 'required|max:500', function (Fluent $input) {
     return $input->games >= 100;
 });
+```
+
+## Laravel Tip 💡: Customize the Default Password Rules ([⬆️](#validation-tips-cd-))
+
+Laravel ships with default password rules that suit most use cases. However, if you need to use specific rules, you don't have to discard the default ones. Instead, customize them, and keep your rules in one single place 🚀
+
+```php
+<?php
+
+use Illuminate\Validation\Rules\Password;
+
+public function boot(): void
+{
+    Password::defaults(function () {
+        $rule = Password::min(8);
+
+        return $this->app->isProduction()
+            ? $rule->mixedCase()->uncompromised()
+            : $rule;
+    });
+}
+
+// Now you can use it like this
+'password' => ['required', Password::defaults()]
+
+// Instead of defining custom rules everywhere in your app
+'password' => ['required', Password::min(8)->mixedCase()->uncompromised()]
 ```

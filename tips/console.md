@@ -24,6 +24,7 @@
 - [Prohibit DB Destructive Commands](#laravel-tip--prohibit-db-destructive-commands-️)
 - [Conditionally Hide Console Commands](#laravel-tip--conditionally-hide-console-commands-️)
 - [Run Scheduled Commands on a Single Server](#laravel-tip--run-scheduled-commands-on-a-single-server-️)
+- [Handle Command Output](#laravel-tip--handle-command-output-️)
 
 ## Laravel Tip 💡: Much Cooler Command Output ([⬆️](#artisan--console-commands-tips-cd-))
 
@@ -450,4 +451,23 @@ Schedule::command('report:generate')
     ->fridays()
     ->at('17:00')
     ->onOneServer(); // the command will run on a single server
+```
+
+## Laravel Tip 💡: Handle Command Output ([⬆️](#artisan--console-commands-tips-cd-))
+
+Did you know that Laravel's scheduler allows you to save or append a command’s output to a specific file? 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Schedule;
+ 
+Schedule::command('emails:send')
+    ->daily()
+    ->sendOutputTo($filePath);
+    
+// You can also append the output 🔥
+Schedule::command('emails:send')
+    ->daily()
+    ->appendOutputTo($filePath);
 ```

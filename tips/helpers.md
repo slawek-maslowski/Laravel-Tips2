@@ -60,6 +60,7 @@
 - [The "keyBy" Method](#laravel-tip--the-keyby-method-️)
 - [The "remove" Str Method](#laravel-tip--the-remove-str-method-️)
 - [Check If a String Is a URL](#laravel-tip--check-if-a-string-is-a-url-️)
+- [Extract Text Between Strings](#laravel-tip--extract-text-between-strings-️)
 
 ## Laravel Tip 💡: The "squish" method ([⬆️](#helpers-tips-cd-))
 
@@ -1086,4 +1087,18 @@ Str::isUrl('http://valid-url.com', ['https', 'http']); // true
 Str::isUrl('ftp://yourserverdomain.com'); // true
 
 Str::isUrl('non-valid-url'); // false
+```
+
+## Laravel Tip 💡: Extract Text Between Strings ([⬆️](#helpers-tips-cd-))
+
+Have you ever needed to extract text that is between 2 strings? Laravel ships with the "between" method to do exactly that 🚀
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+ 
+$slice = Str::between('This is my name', 'This', 'name');
+ 
+// ' is my '
 ```

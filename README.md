@@ -4,7 +4,7 @@ Daily Laravel/PHP tips I share on my [X](https://x.com/OussamaMater) and [Linked
 
 Currently, there are over 300 tips categorized as follows:
 
-- [Eloquent & Database Tips](./tips/eloquent-and-database.md) (93 tips)
+- [Eloquent & Database Tips](./tips/eloquent-and-database.md) (94 tips)
 - [Helpers Tips](./tips/helpers.md) (61 tips)
 - [Testing Tips](./tips/testing.md) (27 tips)
 - [Artisan & Console Command Tips](./tips/console.md) (24 tips)

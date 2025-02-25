@@ -93,6 +93,7 @@
 - [Prevent Accessing Missing Attributes](#laravel-tip--prevent-accessing-missing-attributes-️)
 - [The New "incrementOrCreate" Method](#laravel-tip--the-new-incrementorcreate-method-️)
 - [Keep an Eye on Open Connections](#laravel-tip--keep-an-eye-on-open-connections-️)
+- [The "MassPrunable" trait](#laravel-tip--the-massprunable-trait-️)
 
 ## Laravel Tip 💡: Get Original Attributes ([⬆️](#eloquent--database-tips-cd-))
 
@@ -1879,4 +1880,29 @@ public function boot(): void
 // If the number of open connections exceeds 100, the DatabaseBusy event will be triggered,
 // allowing you to send a notification to the team.
 php artisan db:monitor --databases=mysql --max=100
+```
+
+## Laravel Tip 💡: The "MassPrunable" trait ([⬆️](#eloquent--database-tips-cd-))
+
+If you are pruning models with the "Prunable" trait and not using model events, you might as well use the "MassPrunable" trait to prune them with a single query. This will be much more efficient 🚀
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\MassPrunable;
+
+class Flight extends Model
+{
+    use MassPrunable;
+
+    public function prunable(): Builder
+    {
+        return static::where('created_at', '<=', now()->subMonth());
+    }
+}
+
+// Schedule the pruning command to run daily for example
+$schedule->command(PruneCommand::class)->daily();
 ```

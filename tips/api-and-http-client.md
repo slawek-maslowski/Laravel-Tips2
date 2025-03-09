@@ -11,6 +11,7 @@
 - [Send Concurrent Requests](#laravel-tip--send-concurrent-requests-️)
 - [URI Templates](#laravel-tip--uri-templates-️)
 - [Global Middleware for HTTP Client](#laravel-tip--global-middleware-for-http-client-️)
+- [Convert Responses to Exceptions](#laravel-tip--convert-responses-to-exceptions-️)
 
 ## Laravel Tip 💡: The "withToken()" method ([⬆️](#api--the-http-client-tips-cd-))
 
@@ -224,4 +225,36 @@ Http::globalRequestMiddleware(fn ($request) => $request->withHeader(
 Http::globalResponseMiddleware(fn ($response) => $response->withHeader(
     'X-Finished-At', now()->toDateTimeString()
 ));
+```
+
+## Laravel Tip 💡: Convert Responses to Exceptions ([⬆️](#api--the-http-client-tips-cd-))
+
+When consuming APIs, your request might fail. While you can manually check and throw exceptions, Laravel ships with handy helpers to do exactly that 🚀
+
+```php
+<?php
+
+// Instead of this 🥱
+if ($response->clientError()) {
+    throw new RequestException($response);
+}
+
+if ($response->serverError()) {
+    throw new RequestException($response);
+}
+
+if ($response->failed()) {
+    throw new RequestException($response);
+}
+
+// You can do this 😎
+$response->throwIfClientError(); // >=400 & <500
+
+$response->throwIfServerError(); // >= 500
+
+// You can set an exact status
+$response->throwIfStatus(403);
+
+// Or even specify a range 🔥
+$response->throwIfStatus(fn(int $status) => $status >= 400);
 ```

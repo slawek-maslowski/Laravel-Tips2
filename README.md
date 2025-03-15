@@ -2,7 +2,7 @@
 
 Daily Laravel/PHP tips I share on my [X](https://x.com/OussamaMater) and [LinkedIn](https://www.linkedin.com/in/oussamamater/). For more in-depth articles about Laravel, feel free to check out my [blog](https://blog.oussama-mater.tech/).
 
-![Total Tips](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/oussamamater/laravel-tips/main/stats.json&label=Total%20Tips&query=$.totalTips&color=blue)
+![Total Tips](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Foussamamater%2Flaravel-tips%2Fmain%2Fstats.json&label=Total%20Tips&query=%24.totalTips&color=blue)
 ![Last Updated](https://img.shields.io/github/last-commit/oussamamater/laravel-tips?label=Last%20Updated&color=green)
 
 ## 📚 Categories

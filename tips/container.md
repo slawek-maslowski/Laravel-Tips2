@@ -5,6 +5,7 @@
 - [Check Your Application Enviroment](#laravel-tip--check-your-application-enviroment-️)
 - [The New "optimizes" Method](#laravel-tip--the-new-optimizes-method-️)
 - [Deferred Providers](#laravel-tip--deferred-providers-️)
+- [Binding Primitives to Config Values](#laravel-tip--binding-primitives-to-config-values-️)
 
 ## Laravel Tip 💡: Use rebinding events to refresh dependencies ([⬆️](#container-tips-cd-))
 
@@ -141,4 +142,24 @@ class RiakServiceProvider extends ServiceProvider implements DeferrableProvider
         });
     }
 }
+```
+
+## Laravel Tip 💡: Binding Primitives to Config Values ([⬆️](#container-tips-cd-))
+
+Sometimes, you might need to bind a primitive to a value, such as a config value. Instead of using "give()" with a callback, Laravel ships with the "giveConfig" shortcut to do exactly that 🚀
+
+```php
+<?php
+
+// Instead of this 🥱
+app()
+    ->when(GitHub::class)
+    ->needs('$apiKey')
+    ->give(fn() => config('services.github.api-key'));
+
+// You can do this 🔥
+app()
+    ->when(GitHub::class)
+    ->needs('$apiKey')
+    ->giveConfig('services.github.api-key');
 ```

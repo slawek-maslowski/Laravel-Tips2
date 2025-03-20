@@ -12,7 +12,8 @@
 - [The New Flexible Cache Method](#laravel-tip--the-new-flexible-cache-method-️)
 - [Retrieve and Delete Items From the Session](#laravel-tip--retrieve-and-delete-items-from-the-session-️)
 - [On-Demand Storage Disks](#laravel-tip--on-demand-storage-disks-️)
-- [Higher Order Messages with Conditionables](#laravel-tip--higher-order-messages-with-conditionables)
+- [Higher Order Messages with Conditionables](#laravel-tip--higher-order-messages-with-conditionables-️)
+- [First Class Callables](#php-tip--first-class-callables-️)
 
 ## Laravel Tip 💡: isset() ([⬆️](#other-useful-tips-cd-))
 
@@ -227,7 +228,7 @@ $disk = Storage::build([
 $disk->put('image.jpg', $content);
 ```
 
-## Laravel Tip 💡: Higher Order Messages with Conditionables
+## Laravel Tip 💡: Higher Order Messages with Conditionables ([⬆️](#other-useful-tips-cd-))
 
 If you are using the Conditionable trait in your classes or working with a Conditionable class like "Str", you can make use of higher order messages for an even more fluent API 🚀
 
@@ -244,4 +245,27 @@ Str::of("test@example.com")->when(
 Str::of("test@example.com")
   ->when->contains("@") // use when() instead on your custom conditionable classes
   ->append(" (email)");
+```
+
+## PHP Tip 💡: First Class Callables ([⬆️](#other-useful-tips-cd-))
+
+PHP 8.1 introduced first class callables. They can add syntactic sugar especially when working with Laravel collections, where closures are commonly used 🚀
+
+```php
+<?php
+
+public function handle(): void
+{
+    $this->comments
+        // Instead of this 🥱
+        ->filter(fn (Comment $comment) => $this->isSpam($comment))
+        // You can use first class callables
+        ->filter($this->isSpam(...))
+        
+}
+
+private function isSpam(Comment $comment): bool
+{
+    // Check if the comment is a spam
+}
 ```

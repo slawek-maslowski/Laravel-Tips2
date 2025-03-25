@@ -12,7 +12,7 @@ Currently, there are over 300 tips categorized as follows:
 - 🗄️ [Eloquent & Database Tips](./tips/eloquent-and-database.md) (94 tips)
 - 🛠️ [Helpers Tips](./tips/helpers.md) (61 tips)
 - 🧪 [Testing Tips](./tips/testing.md) (27 tips)
-- 💻 [Artisan & Console Command Tips](./tips/console.md) (24 tips)
+- 💻 [Artisan & Console Command Tips](./tips/console.md) (25 tips)
 - 🔄 [Routing & Request Tips](./tips/routing.md) (22 tips)
 - 📊 [Laravel Collections Tips](./tips/collections.md) (17 tips)
 - ✅ [Validation Tips](./tips/validation.md) (19 tips)

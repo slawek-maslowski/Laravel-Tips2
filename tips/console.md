@@ -25,6 +25,7 @@
 - [Conditionally Hide Console Commands](#laravel-tip--conditionally-hide-console-commands-️)
 - [Run Scheduled Commands on a Single Server](#laravel-tip--run-scheduled-commands-on-a-single-server-️)
 - [Handle Command Output](#laravel-tip--handle-command-output-️)
+- [Prompt For Missing Arguments](#laravel-tip--prompt-for-missing-arguments-️)
 
 ## Laravel Tip 💡: Much Cooler Command Output ([⬆️](#artisan--console-commands-tips-cd-))
 
@@ -470,4 +471,41 @@ Schedule::command('emails:send')
 Schedule::command('emails:send')
     ->daily()
     ->appendOutputTo($filePath);
+```
+
+## Laravel Tip 💡: Prompt for Missing Arguments ([⬆️](#artisan--console-commands-tips-cd-))
+
+Have you ever needed to ensure users provide the required console arguments? Laravel ships with the "PromptsForMissingInput" contract to automatically prompt the user for missing input 🚀
+
+```php
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Contracts\Console\PromptsForMissingInput;
+
+class SendEmails extends Command implements PromptsForMissingInput
+{
+    /**
+     * @var string
+     */
+    protected $signature = 'mail:send {user}';
+
+    public function handle(): void
+    {
+        $user = $this->argument('user');
+
+        // ...
+    }
+}
+
+/**
+ * If the "user" argument is not provided, Laravel automatically prompts for it 🔥
+ * php artisan mail:send
+ * 
+ ┌ What is the user? ───────────────────────────────────────────┐
+ │ oussama                                                      │
+ └──────────────────────────────────────────────────────────────┘
+*/
 ```
